@@ -4,7 +4,7 @@
 
 本项目尝试把线性代数从“定义堆叠”改写成一条更自然的学习主线：先解决线性方程组，再引出矩阵运算，随后过渡到特征值分解、正交对角化，最后收束到二次型与正定矩阵。整套内容使用 LaTeX 编写，适合继续迭代为开源教材、课程讲义或打印版学习资料。
 
-![教材封面预览](images/preview/cover.png)
+![教材封面预览](assets/images/preview/cover.png)
 
 仓库连接：
 
@@ -42,12 +42,19 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
 
 ```text
 .
+├─ LICENSE
 ├─ README.md
-├─ from_zero_linear_algebra.tex
-├─ from_zero_linear_algebra.pdf
-└─ images
-   ├─ csu
-   └─ mygo
+├─ CONTRIBUTING.md
+├─ THIRD_PARTY_ASSETS.md
+├─ src
+│  └─ from_zero_linear_algebra.tex
+├─ dist
+│  └─ from_zero_linear_algebra.pdf
+└─ assets
+   └─ images
+      ├─ csu
+      ├─ mygo
+      └─ preview
 ```
 
 ## 讲义结构
@@ -68,11 +75,16 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
 推荐使用 `XeLaTeX` 编译：
 
 ```bash
+cd src
 xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 ```
 
-建议双编译一次，以正确生成目录、页码和交叉引用。
+编译完成后，将生成的 PDF 复制到 `dist/` 作为发布成品即可。当前仓库中的成品文件为：
+
+```text
+dist/from_zero_linear_algebra.pdf
+```
 
 ## 设计与写作取向
 
@@ -86,14 +98,16 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 项目中使用了两类视觉素材：
 
 - MyGO!!!!! 相关角色图与视觉图，用于讲义中的陪学叙述与版式增强
-- 中南大学官网相关图片，用于封面与机构信息呈现
+- 中南大学校徽图片，用于封面机构标识呈现
 
 当前使用的图片来源包括：
 
 - MyGO!!!!! 官方动画站点：<https://anime.bang-dream.com/mygo/>
-- 中南大学官网：<https://www.csu.edu.cn/>
+- 用户提供的 `中南大学logo.rar` 压缩包（内含 `csu.cdr / csu.gif / csu.jpg / csu.pdf`）
 
 如果你准备将本项目进一步公开传播、二次出版或用于商业场景，建议先自行确认相关图片素材的版权与使用边界。
+
+更详细的素材说明见 [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md)。
 
 ## 作者信息
 

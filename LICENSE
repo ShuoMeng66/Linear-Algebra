@@ -1,0 +1,23 @@
+Copyright (c) 2026 ShuoMeng66
+
+本仓库中由作者原创的文字内容、LaTeX 源码结构、章节编排、题目讲解与教学性说明，
+除另有说明外，采用以下许可协议发布：
+
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+
+你可以在遵守以下条件的前提下复制、分发、修改和再创作本仓库中的原创教学内容：
+
+1. 署名：保留作者署名 `ShuoMeng66`。
+2. 非商业使用：不得将原创内容直接用于商业销售或商业培训变现。
+3. 相同方式共享：若你基于本仓库原创内容进行改编并公开发布，需继续使用相同或兼容的非商业共享协议。
+
+本许可不适用于以下内容：
+
+1. 第三方角色图片、缩略图、视觉图、校徽、Logo 等素材；
+2. 来自外部官方网站的图片资源；
+3. 在 [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md) 中明确标注为第三方内容的文件。
+
+对于上述第三方素材，你必须遵守其原始权利人或来源站点的授权条款；本仓库不对这些素材授予额外许可。
+
+完整协议文本请参阅：
+https://creativecommons.org/licenses/by-nc-sa/4.0/
