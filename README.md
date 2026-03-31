@@ -283,6 +283,7 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 ```bash
 cd src
 xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
+xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 ```
 
 编译后将生成的 PDF 覆盖到 `dist/` 即可：
