@@ -202,6 +202,8 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 
 订阅成功后，左侧通常会出现 `教育 / 线性代数 / 教材伴学` 等分类，表示订阅已被正确识别。
 
+，在确定成功订阅后，在 Cherry Studio 的左侧`知识库`中创建知识库并且上传本书的pdf。
+
 ### 建议使用的模型
 
 | 你的场景 | 建议模型 | 适合原因 |
