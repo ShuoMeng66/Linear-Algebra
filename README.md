@@ -1,27 +1,65 @@
 # 《从零开始的线性代数教程》
 
-面向零基础、补考复习与自学入门的中文线性代数讲义项目。
+面向零基础、自学入门与补考复习的中文线性代数开源讲义。
 
-本项目尝试把线性代数从“定义堆叠”改写成一条更自然的学习主线：先解决线性方程组，再引出矩阵运算，随后过渡到特征值分解、正交对角化，最后收束到二次型与正定矩阵。整套内容使用 LaTeX 编写，适合继续迭代为开源教材、课程讲义或打印版学习资料。
+这个项目尝试把线性代数从“定义堆叠”改写成一条更自然的学习主线：先解决线性方程组，再引出矩阵运算，随后过渡到特征值分解、正交对角化，最后收束到二次型与正定矩阵。整套内容使用 LaTeX 编写，并配套了一个贴合本教材主线的 Cherry Studio 教材助教。
 
 ![教材封面预览](assets/images/preview/cover.png)
 
-仓库连接：
+## 快速入口
+
+- 直接阅读讲义 PDF：[dist/from_zero_linear_algebra.pdf](dist/from_zero_linear_algebra.pdf)
+- 查看 LaTeX 源码：[src/from_zero_linear_algebra.tex](src/from_zero_linear_algebra.tex)
+- 导入 Cherry Studio 助教：[cherry-studio/assistants.json](cherry-studio/assistants.json)
+- 查看教材助教 skill 说明：[skills/from-zero-linear-algebra-tutor/SKILL.md](skills/from-zero-linear-algebra-tutor/SKILL.md)
+- 查看贡献规范：[CONTRIBUTING.md](CONTRIBUTING.md)
+- 查看当前版本说明：[RELEASE_NOTES.md](RELEASE_NOTES.md)
+
+仓库地址：
 
 ```bash
 git@github.com:ShuoMeng66/Linear-Algebra.git
 ```
 
-## 项目特点
+## 3 分钟快速开始
+
+### 只想先读教材
+
+直接打开：
+
+```text
+dist/from_zero_linear_algebra.pdf
+```
+
+### 想直接用教材助教
+
+把这个订阅地址导入 Cherry Studio：
+
+```text
+https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
+```
+
+然后在助手列表中选择 `从零线代教材助教` 即可。
+
+### 想在本地修改源码
+
+```bash
+git clone git@github.com:ShuoMeng66/Linear-Algebra.git
+cd Linear-Algebra/src
+xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
+xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
+```
+
+## 这本教材想解决什么问题
 
 - 不从传统教材常见的“先讲行列式”开始，而是从 Gauss 消元法和线性方程组切入。
-- 主线稳定，五章之间前后呼应，尽量减少“学完前一章却不知道为什么要学下一章”的割裂感。
-- 例题以三阶矩阵为主，更贴近常见考试题型。
+- 强调章节之间的逻辑衔接，尽量减少“学完前一章却不知道下一章为什么出现”的割裂感。
+- 例题以三阶矩阵为主，更贴近常见考试题型和手算训练。
 - 内容同时照顾零基础和补考同学，重视“为什么这么做”“哪里最容易错”“怎么拿分”。
-- 在版式与叙述中加入 MyGO!!!!! 角色陪学元素，降低阅读门槛，增强连续阅读体验。
-- 额外提供了一个贴合本教材主线的 Cherry Studio 教材助教 skill，不只会讲题，还能做证明步骤拆解、学生思路批改、卡壳引导、错题复盘与补考陪跑。
+- 在版式与叙述中加入 MyGO!!!!! 角色陪学元素，降低阅读门槛。
+- 额外提供 Cherry Studio 教材助教，不只会讲题，还能做证明步骤拆解、思路批改、卡壳引导、错题复盘与补考陪跑。
 
-## 内容主线
+## 教材主线
 
 本教材当前保留并强化的核心主线是：
 
@@ -37,32 +75,46 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
 
 - 正在补考，想快速建立主线和手算能力的同学
 - 学过一遍但知识点碎片化，希望重新梳理逻辑的人
-- 想做中文开源教材、个人讲义或课程配套资料的人
+- 想把教材、讲义、AI 助教一起做成开源项目的人
 
-## 当前文件结构
+## 当前版本亮点
+
+- 五章主线已经统一收束，避免内容发散。
+- 讲义中补入了更多典型三阶例题。
+- 每章增加了更系统的课后练习，并按 `A / B / C` 分级。
+- Cherry Studio 助教已经支持例题精讲、知识点细讲、证明题拆步、思路批改、卡壳提示和 OCR 文本整理。
+- `README`、`CONTRIBUTING`、`LICENSE` 与 skill 说明已经同步对齐，适合继续开源迭代。
+
+## 仓库结构
 
 ```text
 .
-├─ LICENSE
 ├─ README.md
+├─ RELEASE_NOTES.md
+├─ LICENSE
 ├─ CONTRIBUTING.md
 ├─ THIRD_PARTY_ASSETS.md
-├─ cherry-studio
+├─ cherry-studio/
 │  └─ assistants.json
-├─ skills
-│  └─ from-zero-linear-algebra-tutor
+├─ skills/
+│  └─ from-zero-linear-algebra-tutor/
 │     ├─ SKILL.md
-│     └─ references
-├─ src
+│     └─ references/
+├─ src/
 │  └─ from_zero_linear_algebra.tex
-├─ dist
+├─ dist/
 │  └─ from_zero_linear_algebra.pdf
-└─ assets
-   └─ images
-      ├─ csu
-      ├─ mygo
-      └─ preview
+└─ assets/
+   └─ images/
 ```
+
+各目录作用：
+
+- `src/`：LaTeX 源码
+- `dist/`：可直接阅读或发布的 PDF 成品
+- `cherry-studio/`：可直接订阅的助手配置
+- `skills/`：教材助教 skill 本体与参考资料
+- `assets/`：封面、角色图与 README 预览图
 
 ## 讲义结构
 
@@ -79,105 +131,7 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
 
 ## Cherry Studio 教材助教
 
-本仓库额外附带了一个面向 Cherry Studio 的教材助教配置文件，目标不是做“泛泛的线性代数机器人”，而是尽量贴合这本教材自己的讲法，帮助同学：
-
-- 追问“这本书某个例题是怎么来的”
-- 让某个知识点讲得更细、更基础
-- 多给几道同类型题，并且继续按本书主线解释
-- 在补考复习时，快速抓住容易丢分的点
-- 解释证明题里“某一步为什么成立”
-- 检查学生自己写的证明、计算过程或解题思路
-- 在学生“做到一半做不下去”时只给下一步提示
-- 在模型不支持读图时，接住 OCR 文本或文字版题面，继续往下讲
-
-当前可直接用于 Cherry Studio 助手订阅的文件是：
-
-```text
-cherry-studio/assistants.json
-```
-
-如果你把本仓库推送到 GitHub 主分支，那么常用订阅地址可以写成：
-
-```text
-https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
-```
-
-## 零基础部署流程
-
-这一部分默认你完全不懂 AI、也没接触过模型和 API。
-
-### 1. 先装 Cherry Studio
-
-先去 Cherry Studio 官方下载页安装客户端：
-
-- 官方下载页：<https://docs.cherry-ai.com/en-us/cherrystudio/download>
-
-装好以后直接打开即可。
-
-### 2. 准备一个“模型服务”
-
-Cherry Studio 本身是客户端，真正负责回答问题的是你接入的模型。  
-你可以把“模型”理解成真正给你讲题的 AI 大脑，把“API Key / Token”理解成它的使用凭证。
-
-如果你是第一次接触，最推荐两条路线：
-
-#### 路线 A：先试用，最省事
-
-直接走 Cherry Studio 文档里的 ModelScope 路线：
-
-- Cherry Studio 的 ModelScope 接入文档：<https://docs.cherry-ai.com/pre-basic/providers/modelscope>
-
-这条路线的优点是：
-
-- 不需要自己部署模型
-- Cherry 文档步骤比较完整
-- 文档写明每天有 `2000` 次免费 API 调用额度（以官方最新规则为准）
-
-#### 路线 B：你已经有 API Key
-
-如果你已经有 OpenAI、Anthropic、Google Gemini 或 DeepSeek 的 API Key，也可以直接在 Cherry Studio 里接入对应服务商：
-
-- 模型服务商配置总览：<https://docs.cherry-ai.com/pre-basic/settings/providers>
-
-补充提醒：
-
-- Cherry Studio 的 OpenAI 文档明确提到，中国大陆用户无法直接访问 OpenAI 官方 API，需要自行解决网络与支付问题。
-- 如果你只是为了稳定地学这本教材，通常没有必要一开始就选最贵的模型。
-- 如果你使用的是 OpenAI / Claude / Gemini 这类海外模型，并且遇到连接超时，可以再看 Cherry Studio 的常规设置文档，重点检查 `代理模式`：<https://docs.cherry-ai.com/pre-basic/settings/general>
-
-### 3. 把教材助教导入 Cherry Studio
-
-Cherry Studio 的助手订阅配置文档在这里：
-
-- 助手订阅配置：<https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe>
-
-照着做时，可以按下面这条顺序：
-
-1. 打开 Cherry Studio
-2. 进入设置
-3. 找到“数据设置”或“助手订阅配置”
-4. 新增一个订阅地址
-5. 把下面这个地址粘进去
-
-```text
-https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
-```
-
-6. 保存并刷新助手列表
-7. 在助手列表中找到 `从零线代教材助教`
-
-### 4. 选择模型并开始提问
-
-导入成功后：
-
-1. 新建一个对话
-2. 选择助手 `从零线代教材助教`
-3. 再选择一个你已经配置好的模型
-4. 开始提问
-
-## 这个教材助教到底能帮你做什么
-
-如果你以前没怎么用过 AI，可以把它理解成一个“围着这本讲义服务”的助教，而不是一个只会直接报答案的机器人。
+这个助教不是泛用线性代数答题器，而是围绕这本教材本身服务的“伴学型助教”。
 
 它比较适合做这些事：
 
@@ -185,19 +139,54 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 - 证明拆步：你只卡在某一步时，单独解释那一步为什么成立
 - 思路批改：你把自己的证明或计算发过去，让它帮你看哪里对、哪里缺逻辑
 - 卡壳提示：你做到一半停住时，让它只给下一步，不直接把整题讲完
-- 错题复盘：你连续几次做错同一类题时，让它总结你的薄弱点并补练习
+- 错题复盘：你连续几次做错同一类题时，让它总结薄弱点并补练习
 - 补考陪跑：时间不多时，让它按“高频考点 + 常见丢分点 + 小练习”带你冲刺
 
-它最适合的提问方式，不只是“这题答案是什么”，而是这种更像和老师交流的话：
+### 零基础部署流程
 
-- “我看不懂第三章里这一步为什么能从特征方程转到齐次线性方程组。”
-- “这是我写的证明，你帮我看看是不是从第二步开始就不严密了。”
-- “我已经把矩阵化成阶梯形了，但不会继续写基础解系，先别给完整答案，只提示下一步。”
-- “我在补考，帮我把第五章正定矩阵最容易考的三种题型整理一下。”
+#### 1. 安装 Cherry Studio
 
-## 建议使用的模型
+- 官方下载页：[Cherry Studio Download](https://docs.cherry-ai.com/en-us/cherrystudio/download)
 
-如果你完全不懂怎么选，直接按下面这张表来就够了：
+#### 2. 准备模型服务
+
+Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可以把“模型”理解成讲题的大脑，把 “API Key / Token” 理解成使用凭证。
+
+如果你是第一次接触，最推荐两条路线：
+
+- 路线 A：先用 ModelScope
+  - 文档：[Cherry Studio ModelScope](https://docs.cherry-ai.com/pre-basic/providers/modelscope)
+  - 优点：不需要自己部署、上手快、对零基础同学最友好
+- 路线 B：已有 API Key
+  - 文档：[模型服务商配置](https://docs.cherry-ai.com/pre-basic/settings/providers)
+  - 适合已经在用 OpenAI、Claude、Gemini 或 DeepSeek 的同学
+
+补充提醒：
+
+- 中国大陆用户使用 OpenAI 官方 API 往往还需要额外处理网络与支付问题。
+- 如果只是为了稳定学习这本教材，没必要一开始就选最贵的模型。
+- 如果海外模型连接超时，可以检查 Cherry Studio 的 `代理模式` 设置。
+
+#### 3. 导入教材助教
+
+- 助手订阅文档：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
+
+导入步骤：
+
+1. 打开 Cherry Studio
+2. 进入设置
+3. 找到“数据设置”或“助手订阅配置”
+4. 新增一个订阅地址
+5. 粘贴下方地址
+
+```text
+https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
+```
+
+6. 保存并刷新助手列表
+7. 选择 `从零线代教材助教`
+
+### 建议使用的模型
 
 | 你的场景 | 建议模型 | 适合原因 |
 | --- | --- | --- |
@@ -205,94 +194,45 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 | 希望讲得更稳、更像老师带着你学 | `claude-sonnet-4-5` / `gemini-2.5-pro` | 更适合长篇解释、分步骤拆解和连续追问 |
 | 卡在难题、压轴题、反复追问都想讲透 | `deepseek-reasoner` / `gpt-5` | 更适合多步推理、复杂例题和细致展开 |
 
-对应的官方模型资料：
+官方模型资料：
 
-- OpenAI GPT-5 系列：<https://platform.openai.com/docs/models/gpt-5>
-- OpenAI GPT-5 mini：<https://platform.openai.com/docs/models/gpt-5-mini>
-- Anthropic Claude 模型总览：<https://docs.anthropic.com/zh-CN/docs/about-claude/models/overview>
-- Google Gemini 2.5 Pro：<https://ai.google.dev/gemini-api/docs/models/gemini-v2>
-- DeepSeek 模型与价格：<https://api-docs.deepseek.com/zh-cn/quick_start/pricing>
+- [OpenAI GPT-5 系列](https://platform.openai.com/docs/models/gpt-5)
+- [OpenAI GPT-5 mini](https://platform.openai.com/docs/models/gpt-5-mini)
+- [Anthropic Claude 模型总览](https://docs.anthropic.com/zh-CN/docs/about-claude/models/overview)
+- [Google Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-v2)
+- [DeepSeek 模型与价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
 
-补充说明：
+最省事的选择顺序：
 
-- OpenAI、Claude、Gemini 这几家模型更新很快，如果你的服务商列表里没有完全相同的名字，优先选择同家族里“当前最新的 mini / sonnet / pro / flagship”版本即可。
-- 如果你只是学这本教材，先选一个稳定、便宜、回复快的模型往往更合适，没必要第一天就上最贵档。
-
-如果你只想先把这个教材助教跑起来，我建议优先顺序是：
-
-1. 没有任何 AI 使用经验：先用 `ModelScope` 路线试起来
+1. 完全没接触过 AI：先用 `ModelScope`
 2. 想要性价比：优先试 `deepseek-chat`
 3. 想要更强的难题讲解能力：再切到 `deepseek-reasoner`
-4. 如果你已经稳定使用 OpenAI / Claude / Gemini，再考虑切到更强模型
+4. 已经稳定使用 OpenAI / Claude / Gemini：再按自己习惯切更强模型
 
-## 如何提问，效果最好
+### 如何提问，效果最好
 
-虽然这个助手会尽量贴合这本书，但如果你能多给一点定位信息，效果会明显更好。
+最推荐你给出这些信息：
 
-最推荐的提问方式：
-
-- 直接说章节名
-- 直接说节标题
-- 直接说“例题精讲 1 / 例题精讲 2”
-- 直接把题目打出来
-- 最好附一张截图
-
-如果你是想让它检查你的思路，建议额外再补两项：
-
+- 章节名或节标题
+- 题目原文
 - 你已经做到哪一步
 - 你最不确定的是哪一句或哪一个变形
 
-如果当前模型不支持读图，也不要紧。你可以改用下面任一种方式：
+如果模型不支持读图，也可以这样处理：
 
 - 把矩阵按行打出来
-- 把题目和已做步骤直接转成文字
+- 把题目和已做步骤转成文字
 - 用 LaTeX 输入关键公式
-- 先用手机 OCR、微信/QQ 提取文字、OneNote/Word OCR 把图片转成文本
+- 先用 OCR 把图片转成文本，再发给助教整理
 
-就算 OCR 文本有点乱，也可以先发出来，这个教材助教会优先帮你整理题意。
+示例提问：
 
-例如你可以这样问：
-
-- “请按《从零开始的线性代数教程》第一章‘例题精讲 2’的思路，详细解释基础解系为什么这样写，不要跳步。”
-- “请把第三章里特征向量为什么还要回到消元法再讲细一点，再给我两个三阶矩阵例子。”
-- “我在补考，麻烦你只按这本书第五章的主线，讲顺序主子式判别法怎么快速拿分。”
-- “这是我写的证明：设 A 是实对称矩阵，所以它一定能对角化……你帮我检查一下这段证明哪里不够严密，先沿我的思路改，不要直接换方法。”
+- “请按《从零开始的线性代数教程》第一章例题精讲 2 的思路，详细解释基础解系为什么这样写，不要跳步。”
+- “这是我写的证明，你帮我看是不是从第二步开始就不严密了，先沿我的思路改，不要直接换方法。”
 - “我只做到增广矩阵化成阶梯形，后面不会写了。先别给完整答案，只告诉我下一步应该盯住什么。”
+- “我在补考，麻烦你只按这本书第五章的主线，讲顺序主子式判别法怎么快速拿分。”
 
-## 一个完整使用示例
-
-### 示例提问
-
-```text
-请按照《从零开始的线性代数教程》第一章“例题精讲 2：三阶齐次方程组的通解与基础解系”的风格，
-详细解释为什么要先找主变量和自由变量，再写基础解系。
-我现在是补考复习，请不要跳步。
-最后再给我一道同类型的三阶题让我练习，并附上答案。
-```
-
-### 你应该期待它做什么
-
-一个好的回答通常会包含这些部分：
-
-1. 先告诉你这题在考什么
-2. 再说它和前面“Gauss 消元、rank、主变量/自由变量”的关系
-3. 把消元过程一步一步写出来
-4. 解释为什么基础解系要按“自由变量取参数”的方式构造
-5. 提醒你哪里最容易丢分
-6. 再给你一道新的同类型三阶题
-
-### 如果回答还不够好，怎么追问
-
-你可以继续补一句：
-
-- “请把每一步行变换都写出来”
-- “请再解释一下为什么自由变量个数等于未知数个数减 rank”
-- “请把这道题和非齐次方程组的‘特解 + 齐次通解’联系起来”
-- “再给我一题难半档的变式”
-
-## 如果你想让它帮你批改证明或检查思路
-
-最推荐你这样发：
+### 一个完整使用示例
 
 ```text
 题目：
@@ -310,36 +250,17 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 请先检查我的思路，不要直接给整段标准答案。先告诉我哪些地方是对的，哪里还缺东西。
 ```
 
-你应该期待它做到这些：
+一个好的回答通常会：
 
-- 先肯定你前面已经抓对的部分
+- 先肯定你已经抓对的部分
 - 再指出第一处真正需要修补的地方
 - 解释“实特征值”为什么还不够，为什么还需要正交特征向量组这层信息
 - 尽量沿你的原思路往下修，而不是一上来整题重写
-- 如果你愿意，再帮你补成更完整、可交作业的版本
+- 如有需要，再补成可交作业的更规范版本
 
-## 如果你只有图片，或者图片里的字识别得很乱
+## 本地编译
 
-如果你用的模型不支持图片，或者截图文字提取出来很乱，可以这样发：
-
-```text
-这是 OCR 出来的题面，可能有错字，你先帮我整理：
-x1 + x2 + x3 = 0
-2x1 + 3x2 + 4x3 = 0
-x1 + x2 + 2x3 = 0
-
-我已经做到：
-R2 - 2R1, R3 - R1
-
-我卡住：
-不知道怎么判断 rank，也不会继续写基础解系。
-```
-
-这类情况下，一个好的教材助教会先帮你把题面和符号整理清楚，再带你继续做，而不是因为输入不够整齐就停住。
-
-## 编译方式
-
-推荐使用 `XeLaTeX` 编译：
+推荐使用 `XeLaTeX`：
 
 ```bash
 cd src
@@ -347,7 +268,7 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 ```
 
-编译完成后，将生成的 PDF 复制到 `dist/` 作为发布成品即可。当前仓库中的成品文件为：
+编译后将生成的 PDF 覆盖到 `dist/` 即可：
 
 ```text
 dist/from_zero_linear_algebra.pdf
@@ -360,7 +281,7 @@ dist/from_zero_linear_algebra.pdf
 - 以“对话解释 + 结构总结 + 关键习题”替代单线灌输式叙述
 - 让每一章都能独立复习，同时又能嵌回整条主线
 
-## 素材说明
+## 素材与版权说明
 
 项目中使用了两类视觉素材：
 
@@ -369,18 +290,23 @@ dist/from_zero_linear_algebra.pdf
 
 当前使用的图片来源包括：
 
-- MyGO!!!!! 官方动画站点：<https://anime.bang-dream.com/mygo/>
-- 用户提供的 `中南大学logo.rar` 压缩包（内含 `csu.cdr / csu.gif / csu.jpg / csu.pdf`）
+- [MyGO!!!!! 官方动画站点](https://anime.bang-dream.com/mygo/)
+- 用户提供的 `中南大学logo.rar` 压缩包
 
-如果你准备将本项目进一步公开传播、二次出版或用于商业场景，建议先自行确认相关图片素材的版权与使用边界。
-
-更详细的素材说明见 [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md)。
+如果你准备将本项目进一步公开传播、二次出版或用于商业场景，建议先自行确认相关图片素材的版权与使用边界。更详细的素材说明见 [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md)。
 
 ## 作者信息
 
 - GitHub 用户名：`ShuoMeng66`
 - 机构：中南大学商学院
 - 邮箱：`3067938917@qq.com`
+
+## 参与贡献
+
+如果你想继续完善教材正文、课后习题或 Cherry Studio 教材助教，请先看：
+
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [LICENSE](LICENSE)
 
 ## 后续可继续增强的方向
 
