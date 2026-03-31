@@ -9,6 +9,7 @@
 - 增加更典型的三阶矩阵例题
 - 增加更适合补考复习的练习题与答案提示
 - 改进 README、仓库结构与编译说明
+- 改进 Cherry Studio 教材助教 skill 的提示词、章节映射、使用说明与示例问法
 
 ## 提交前请注意
 
@@ -28,6 +29,25 @@
 5. 不要随意加入来源不明的图片  
    如果要新增图片、Logo、角色图，请先确认来源与使用边界，并同步更新 [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md)。
 
+6. 修改 skill 时，保持“教材伴学”定位  
+   `skills/` 和 `cherry-studio/` 下的内容不是泛用数学助手，而是围绕《从零开始的线性代数教程》服务的教材助教。修改时请优先保持以下场景：
+   - 解释“这本书某个例题是怎么来的”
+   - 把某个知识点讲得更细、更基础
+   - 提供更多同类型三阶例题
+   - 面向补考同学做重点梳理与易错点提醒
+
+7. 修改 skill 时，默认照顾零基础读者  
+   skill 的提示词、示例问题和回答框架应尽量避免 AI 圈黑话、提示词工程术语和过度抽象的数学表达。目标读者通常只关心“怎么学懂、怎么解题、怎么少丢分”。
+
+8. 修改 skill 后要同步相关文件  
+   如果你修改了教材助教的定位、回答方式、示例或部署流程，请至少检查这些文件是否需要一起更新：
+   - [README.md](README.md)
+   - [cherry-studio/assistants.json](cherry-studio/assistants.json)
+   - [skills/from-zero-linear-algebra-tutor/SKILL.md](skills/from-zero-linear-algebra-tutor/SKILL.md)
+   - [skills/from-zero-linear-algebra-tutor/references/chapter_map.md](skills/from-zero-linear-algebra-tutor/references/chapter_map.md)
+   - [skills/from-zero-linear-algebra-tutor/references/response_patterns.md](skills/from-zero-linear-algebra-tutor/references/response_patterns.md)
+   - [skills/from-zero-linear-algebra-tutor/references/system_prompt.md](skills/from-zero-linear-algebra-tutor/references/system_prompt.md)
+
 ## 文件结构约定
 
 ```text
@@ -36,6 +56,8 @@
 ├─ LICENSE
 ├─ CONTRIBUTING.md
 ├─ THIRD_PARTY_ASSETS.md
+├─ cherry-studio/
+├─ skills/
 ├─ src/
 ├─ dist/
 └─ assets/
@@ -44,6 +66,32 @@
 - `src/` 放 LaTeX 源码
 - `dist/` 放可直接阅读的 PDF 成品
 - `assets/` 放图片资源与 README 预览图
+- `cherry-studio/` 放可直接订阅的助手配置
+- `skills/` 放教材助教 skill 本体与参考资料
+
+## 关于 Cherry Studio skill 的贡献建议
+
+如果你准备改教材助教 skill，建议优先遵守下面几条：
+
+1. 不要把它改成“泛用线性代数机器人”  
+   它的核心价值在于贴合本教材的主线和讲法，而不是追求覆盖所有线代话题。
+
+2. 回答结构要稳定  
+   skill 应优先支持以下几类提问：
+   - 例题来源与例题精讲
+   - 知识点细化讲解
+   - 同类题扩展
+   - 补考复习模式
+
+3. 例子优先用三阶矩阵  
+   除非是为了做最基础的热身说明，否则请尽量维持本仓库“例题以三阶矩阵为主”的风格。
+
+4. 不要把模型密钥、个人接口地址写进仓库  
+   `assistants.json` 只能放公开可分发的助手配置，不能写入个人 API Key、私有网关或带敏感信息的链接。
+
+5. 修改后至少做两项检查  
+   - 检查 `assistants.json` 是否仍是合法 JSON
+   - 检查 README 中的部署流程、模型建议、订阅地址和示例问法是否仍然匹配
 
 ## 编译检查
 
@@ -69,6 +117,7 @@ copy from_zero_linear_algebra.pdf ..\\dist\\from_zero_linear_algebra.pdf
   - 为什么要改
   - 是否重新编译 PDF
   - 是否新增或替换了第三方素材
+  - 如果涉及 skill，是否同步更新了 `README`、`assistants.json` 和 `skills/` 下的参考文件
 
 ## 不建议直接改动的内容
 

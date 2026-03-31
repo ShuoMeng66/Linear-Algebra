@@ -1,6 +1,7 @@
 Copyright (c) 2026 ShuoMeng66
 
-本仓库中由作者原创的文字内容、LaTeX 源码结构、章节编排、题目讲解与教学性说明，
+本仓库中由作者原创的文字内容、LaTeX 源码结构、章节编排、题目讲解、教学性说明、
+Cherry Studio 助手提示词、skill 文档、章节映射、回答模板、JSON 配置与相关说明文本，
 除另有说明外，采用以下许可协议发布：
 
 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
@@ -11,6 +12,12 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 2. 非商业使用：不得将原创内容直接用于商业销售或商业培训变现。
 3. 相同方式共享：若你基于本仓库原创内容进行改编并公开发布，需继续使用相同或兼容的非商业共享协议。
 
+这同样适用于仓库中的教材助教相关内容，包括但不限于：
+
+1. `cherry-studio/assistants.json` 中的原创配置文本；
+2. `skills/from-zero-linear-algebra-tutor/` 下的 `SKILL.md`、章节地图、回答模板与系统提示词；
+3. `README.md`、`CONTRIBUTING.md` 中关于教材助教的原创说明与示例。
+
 本许可不适用于以下内容：
 
 1. 第三方角色图片、缩略图、视觉图、校徽、Logo 等素材；
@@ -18,6 +25,9 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 3. 在 [THIRD_PARTY_ASSETS.md](THIRD_PARTY_ASSETS.md) 中明确标注为第三方内容的文件。
 
 对于上述第三方素材，你必须遵守其原始权利人或来源站点的授权条款；本仓库不对这些素材授予额外许可。
+
+另外，仓库中提及的模型名称、平台名称、服务商品牌名称，仅用于兼容性说明、部署指导或教学示例；
+这些名称对应的商标、品牌和服务权益归其各自权利人所有，本许可不对其授予任何权利。
 
 完整协议文本请参阅：
 https://creativecommons.org/licenses/by-nc-sa/4.0/
