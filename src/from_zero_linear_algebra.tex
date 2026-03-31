@@ -704,10 +704,104 @@ t
 \end{itemize}
 \end{summarybox}
 
-\section{重要习题}
+\section{补充例题：含参数方程组怎么分类讨论}
 
-\begin{exercisebox}[第 1 章重要习题]
-\begin{enumerate}
+\begin{examplebox}[补充例题 3：唯一解、无解、无穷多解怎么一题看完]
+讨论参数 \(a\) 取何值时，线性方程组
+\[
+\begin{cases}
+x_1+x_2+x_3=1,\\
+x_1+a x_2+2x_3=2,\\
+x_1+2x_2+a x_3=2
+\end{cases}
+\]
+无解、有唯一解或有无穷多个解；并在有无穷多个解时写出通解。
+
+\tcblower
+
+先用第二、三行分别减去第一行：
+\[
+\left[
+\begin{array}{ccc|c}
+1&1&1&1\\
+0&a-1&1&1\\
+0&1&a-1&1
+\end{array}
+\right].
+\]
+
+这时真正决定分类的，是右下角那个 \(2\times 2\) 小系统：
+\[
+\begin{cases}
+(a-1)x_2+x_3=1,\\
+x_2+(a-1)x_3=1.
+\end{cases}
+\]
+
+它的系数行列式是
+\[
+\begin{vmatrix}
+a-1&1\\
+1&a-1
+\end{vmatrix}
+=(a-1)^2-1=a(a-2).
+\]
+
+所以：
+\begin{itemize}
+  \item 当 \(a\neq 0,2\) 时，这个 \(2\times 2\) 系统可逆，原方程组有唯一解。
+  \item 当 \(a=0\) 时，
+  \[
+  \begin{cases}
+  -x_2+x_3=1,\\
+  x_2-x_3=1
+  \end{cases}
+  \]
+  两式相加得到 \(0=2\)，故无解。
+  \item 当 \(a=2\) 时，
+  \[
+  \begin{cases}
+  x_2+x_3=1,\\
+  x_2+x_3=1
+  \end{cases}
+  \]
+  只有一个独立条件，因此有无穷多个解。
+\end{itemize}
+
+当 \(a=2\) 时，设 \(x_3=t\)，则 \(x_2=1-t\)，再由第一式得
+\[
+x_1=1-x_2-x_3=0.
+\]
+因此通解可写成
+\[
+\begin{pmatrix}
+x_1\\x_2\\x_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix}
++
+t\begin{pmatrix}
+0\\-1\\1
+\end{pmatrix}.
+\]
+\end{examplebox}
+
+\section{课后分级习题}
+
+\begin{summarybox}[题型说明]
+下面这组补充题，主要根据中南大学线性代数平时练习与历年试卷的常见题型改编，并按本书主线重排成 `A/B/C` 三档：
+\begin{itemize}
+  \item `A` 组先保底，专门练会消元、秩、基础解系这些最核心动作；
+  \item `B` 组接近期中期末常见大题的结构；
+  \item `C` 组强调综合判断，适合补考前压轴训练。
+\end{itemize}
+\end{summarybox}
+
+\begin{exercisebox}[第 1 章分级习题]
+\textbf{A 组：基础巩固}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 求解方程组
   \[
   \begin{cases}
@@ -725,17 +819,74 @@ t
   \end{cases}
   \]
   的通解与基础解系。
-  \item 已知 \(A\) 是 \(3\times 3\) 矩阵，且 \(rank(A)=2\)。问齐次方程组 \(Ax=0\) 的基础解系里有几个向量？
-  \item 若 \(rank(A)=rank([A\mid b])=2\)，且未知数有 3 个，问方程组 \(Ax=b\) 有几个自由变量？
+  \item 已知 \(A\) 是 \(4\times 4\) 矩阵，且 \(rank(A)=2\)。问齐次方程组 \(Ax=0\) 的基础解系里有几个向量？
+\end{enumerate}
+
+\textbf{B 组：典型考题}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 讨论参数 \(a\) 取何值时，方程组
+  \[
+  \begin{cases}
+  x_1+x_2+x_3=1,\\
+  2x_1+(a+1)x_2+3x_3=2,\\
+  x_1+2x_2+a x_3=3-a
+  \end{cases}
+  \]
+  无解、有唯一解或有无穷多个解；并在有无穷多个解时写出通解。
+  \item 已知某三元非齐次线性方程组的系数矩阵秩为 \(2\)，且它有三个解
+  \[
+  \eta_1=(1,0,1)^T,\quad
+  \eta_2=(0,1,0)^T,\quad
+  \eta_3=(2,-1,2)^T.
+  \]
+  写出该非齐次方程组的通解。
+\end{enumerate}
+
+\textbf{C 组：综合提升}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 设四元齐次线性方程组
+  \[
+  I:\begin{cases}
+  x_1+x_2+x_3+x_4=0,\\
+  x_1+x_2-x_3-x_4=0
+  \end{cases}
+  \qquad
+  II:\begin{cases}
+  x_1-x_2=0,\\
+  x_3+x_4=0
+  \end{cases}
+  \]
+  分别求出 \(I\) 与 \(II\) 的基础解系，并求它们的公共解。
+  \item 若 \(rank(A)=rank([A\mid b])=2\)，且未知数有 \(4\) 个，说明方程组 \(Ax=b\) 为什么一定有无穷多解，并写出自由变量个数。
 \end{enumerate}
 \end{exercisebox}
 
 \begin{summarybox}[答案提示]
-\begin{enumerate}
+\textbf{A 组提示}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 先消元，可得唯一解 \((0,1,0)^T\)。
   \item 通解可写成 \(t(-1,0,1)^T\)，基础解系由这一个向量组成。
-  \item 有 \(3-2=1\) 个向量。
-  \item 有 1 个自由变量，因此有无穷多解。
+  \item 有 \(4-2=2\) 个向量。
+\end{enumerate}
+
+\textbf{B 组提示}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 先看系数行列式 \(a(a-2)\)。其中 \(a=0\) 时无解，\(a=2\) 时有无穷多解，其通解可写成
+  \[
+  \begin{pmatrix}
+  1\\-t\\t
+  \end{pmatrix}.
+  \]
+  \item 先取一个特解，比如 \(\eta_1\)。再看 \(\eta_1-\eta_2=(1,-1,1)^T\)，它就是对应齐次方程组的一条方向，所以通解为
+  \[
+  \eta_1+t(1,-1,1)^T.
+  \]
+\end{enumerate}
+
+\textbf{C 组提示}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 方程组 \(I\) 的基础解系可取 \((1,-1,0,0)^T,(0,0,1,-1)^T\)；方程组 \(II\) 的基础解系可取 \((1,1,0,0)^T,(0,0,1,-1)^T\)。公共解由 \((0,0,1,-1)^T\) 张成。
+  \item 自由变量个数是 \(4-2=2\)，因此不可能只有唯一解。
 \end{enumerate}
 \end{summarybox}
 
@@ -1100,10 +1251,72 @@ A=
   \item 真正高频的应用，是把行列式当成\important{可逆性与特征值的桥梁}。
 \end{itemize}
 
-\section{重要习题}
+\section{补充例题：矩阵方程到底怎么下手}
 
-\begin{exercisebox}[第 2 章重要习题]
-\begin{enumerate}
+\begin{examplebox}[补充例题 2：把矩阵方程先化成“右乘逆矩阵”]
+设
+\[
+A=\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+0&0&1
+\end{pmatrix},
+\qquad
+B=\begin{pmatrix}
+1&0&1\\
+0&1&0\\
+1&1&1
+\end{pmatrix},
+\]
+求矩阵 \(X\)，使得
+\[
+XA=B.
+\]
+
+\tcblower
+
+这类题第一反应应该是：如果 \(A\) 可逆，那就把右边的 \(A\) 消掉。
+
+先求
+\[
+A^{-1}=
+\begin{pmatrix}
+1&-1&1\\
+0&1&-1\\
+0&0&1
+\end{pmatrix}.
+\]
+
+于是
+\[
+X=BA^{-1}
+=
+\begin{pmatrix}
+1&0&1\\
+0&1&0\\
+1&1&1
+\end{pmatrix}
+\begin{pmatrix}
+1&-1&1\\
+0&1&-1\\
+0&0&1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&-1&2\\
+0&1&-1\\
+1&0&1
+\end{pmatrix}.
+\]
+
+这个例题想提醒你：矩阵方程不是“换个皮的代数方程”，而是要先分清楚未知矩阵在左边还是右边，然后决定左乘还是右乘逆矩阵。
+\end{examplebox}
+
+\section{课后分级习题}
+
+\begin{exercisebox}[第 2 章分级习题]
+\textbf{A 组：基础巩固}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 计算
   \[
   \begin{pmatrix}
@@ -1135,6 +1348,43 @@ A=
   \end{pmatrix}
   \]
   的行列式。
+\end{enumerate}
+
+\textbf{B 组：典型考题}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 用 Gauss-Jordan 方法求矩阵
+  \[
+  \begin{pmatrix}
+  1&1&0\\
+  0&1&1\\
+  1&0&1
+  \end{pmatrix}
+  \]
+  的逆矩阵。
+  \item 求矩阵 \(X\)，使
+  \[
+  X\begin{pmatrix}
+  1&1&0\\
+  0&1&1\\
+  0&0&1
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  2&1&0\\
+  1&1&1\\
+  0&2&1
+  \end{pmatrix}.
+  \]
+\end{enumerate}
+
+\textbf{C 组：综合提升}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 设 \(A\) 为三阶可逆矩阵，且 \(A^*=2A^{-1}\)。求 \(\det(A)\) 与 \(\det(A^*)\)。
+  \item 设三阶矩阵 \(A\) 满足
+  \[
+  A^2-3A+2I=0.
+  \]
+  说明 \(A\) 是否可逆，并把 \(A^{-1}\) 表示成 \(A\) 与 \(I\) 的线性组合。
   \item 判断矩阵
   \[
   \begin{pmatrix}
@@ -1148,7 +1398,8 @@ A=
 \end{exercisebox}
 
 \begin{summarybox}[答案提示]
-\begin{enumerate}
+\textbf{A 组提示}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 结果为
   \[
   \begin{pmatrix}
@@ -1159,7 +1410,40 @@ A=
   \]
   \item 转置后第一行变第一列。
   \item 行列式为 \(2\)。
-  \item 不可逆，因为第二行是第一行的 2 倍，行列式为 \(0\)。
+\end{enumerate}
+
+\textbf{B 组提示}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 逆矩阵为
+  \[
+  \frac12\begin{pmatrix}
+  1&-1&1\\
+  1&1&-1\\
+  -1&1&1
+  \end{pmatrix}.
+  \]
+  \item 先求右边矩阵的逆，再右乘，结果可写成
+  \[
+  \begin{pmatrix}
+  2&-1&1\\
+  1&0&1\\
+  0&2&-1
+  \end{pmatrix}.
+  \]
+\end{enumerate}
+
+\textbf{C 组提示}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 因为 \(A^*=\det(A)A^{-1}\)，所以 \(\det(A)=2\)，进而 \(\det(A^*)=\det(A)^{2}=4\)。
+  \item 由
+  \[
+  A^2-3A+2I=0
+  \]
+  左右同乘 \(A^{-1}\) 可得
+  \[
+  A^{-1}=\frac{3I-A}{2}.
+  \]
+  \item 不可逆，因为第二行是第一行的 2 倍，故行列式为 \(0\)。
 \end{enumerate}
 \end{summarybox}
 
@@ -1441,10 +1725,65 @@ t
 \lambda_1\lambda_2\lambda_3=\det(A).
 \]
 
-\section{重要习题}
+\section{补充例题：重根不一定决定一切}
 
-\begin{exercisebox}[第 3 章重要习题]
-\begin{enumerate}
+\begin{examplebox}[补充例题 2：参数怎样影响能不能对角化]
+设
+\[
+A(a)=
+\begin{pmatrix}
+1&a&0\\
+0&1&1\\
+0&0&2
+\end{pmatrix}.
+\]
+讨论它在什么条件下可以相似对角化。
+
+\tcblower
+
+先看特征值。因为它是上三角矩阵，所以特征值就是对角线元素：
+\[
+\lambda_1=1,\quad \lambda_2=1,\quad \lambda_3=2.
+\]
+
+关键在于重特征值 \(\lambda=1\) 对应的特征向量够不够多。
+
+计算
+\[
+A-I=
+\begin{pmatrix}
+0&a&0\\
+0&0&1\\
+0&0&1
+\end{pmatrix}.
+\]
+解 \((A-I)x=0\)：
+\[
+\begin{cases}
+a x_2=0,\\
+x_3=0.
+\end{cases}
+\]
+
+\begin{itemize}
+  \item 当 \(a\neq 0\) 时，必须有 \(x_2=0,\ x_3=0\)，只有 \(x_1\) 自由，所以属于 \(\lambda=1\) 的特征空间维数是 \(1\)。
+  \item 当 \(a=0\) 时，只剩 \(x_3=0\)，此时 \(x_1,x_2\) 都自由，所以属于 \(\lambda=1\) 的特征空间维数是 \(2\)。
+\end{itemize}
+
+因此：
+\begin{itemize}
+  \item 当 \(a=0\) 时，有 3 个线性无关特征向量，可以相似对角化；
+  \item 当 \(a\neq 0\) 时，只有 2 个线性无关特征向量，不可以相似对角化。
+\end{itemize}
+
+这道题最想提醒你的是：\important{不是“有重根”就一定不能对角化，而是要看重根对应的特征空间维数够不够。}
+\end{examplebox}
+
+\section{课后分级习题}
+
+\begin{exercisebox}[第 3 章分级习题]
+\textbf{A 组：基础巩固}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 求矩阵
   \[
   \begin{pmatrix}
@@ -1463,6 +1802,11 @@ t
   \end{pmatrix}
   \]
   属于 \(\lambda=2\) 的特征向量。
+  \item 已知三阶矩阵 \(A\) 的特征值为 \(1,2,4\)，求 \(\mathrm{tr}(A)\) 与 \(\det(A)\)。
+\end{enumerate}
+
+\textbf{B 组：典型考题}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
   \item 判断矩阵
   \[
   \begin{pmatrix}
@@ -1472,16 +1816,67 @@ t
   \end{pmatrix}
   \]
   是否可相似对角化。
-  \item 已知三阶矩阵 \(A\) 的特征值为 \(1,2,4\)，求 \(\mathrm{tr}(A)\) 与 \(\det(A)\)。
+  \item 设
+  \[
+  A(a)=
+  \begin{pmatrix}
+  1&a&0\\
+  0&1&1\\
+  0&0&2
+  \end{pmatrix},
+  \]
+  讨论它何时可相似对角化。
+\end{enumerate}
+
+\textbf{C 组：综合提升}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 设三阶矩阵 \(A\) 的特征多项式为
+  \[
+  p(\lambda)=(\lambda-2)^2(\lambda+1),
+  \]
+  且 \(rank(A-2I)=2\)。判断 \(A\) 是否可相似对角化。
+  \item 已知三阶矩阵 \(A\) 的特征值为 \(1,1,2\)，并且
+  \[
+  v_1=(1,1,0)^T,\quad v_2=(1,-1,0)^T
+  \]
+  是属于 \(\lambda=1\) 的两个线性无关特征向量，
+  \[
+  v_3=(1,0,1)^T
+  \]
+  是属于 \(\lambda=2\) 的特征向量。写出一个可逆矩阵 \(P\) 和对角阵 \(D\)，使
+  \[
+  P^{-1}AP=D,
+  \]
+  并求出矩阵 \(A\)。
 \end{enumerate}
 \end{exercisebox}
 
 \begin{summarybox}[答案提示]
-\begin{enumerate}
+\textbf{A 组提示}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 特征值为 \(2,3,1\)。
   \item 可取 \((1,1,0)^T\)。
-  \item 不可相似对角化，因为 \(\lambda=2\) 只有 1 个线性无关特征向量。
   \item \(\mathrm{tr}(A)=7,\ \det(A)=8\)。
+\end{enumerate}
+
+\textbf{B 组提示}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 不可相似对角化，因为 \(\lambda=2\) 只有 1 个线性无关特征向量。
+  \item 当且仅当 \(a=0\) 时可相似对角化。
+\end{enumerate}
+
+\textbf{C 组提示}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 对于 \(\lambda=2\)，代数重数是 \(2\)，而 \(rank(A-2I)=2\) 说明零空间维数只有 \(1\)，所以不可相似对角化。
+  \item 取
+  \[
+  P=(v_1,v_2,v_3),\qquad D=\mathrm{diag}(1,1,2),
+  \]
+  再用
+  \[
+  A=PDP^{-1}
+  \]
+  算出 \(A\) 即可。
 \end{enumerate}
 \end{summarybox}
 
@@ -1714,10 +2109,69 @@ y^TQ^TAQy=y^TDy.
 
 如果某个特征值有多个线性无关特征向量，它们彼此不一定一开始就单位化。这个时候我们可以在同一个特征空间里做单位化，必要时做 Gram-Schmidt 正交化。
 
-\section{重要习题}
+\section{补充例题：重特征值下怎样补成正交基}
 
-\begin{exercisebox}[第 4 章重要习题]
-\begin{enumerate}
+\begin{examplebox}[补充例题 2：一眼看出正交对角化的结构]
+设
+\[
+A=
+\begin{pmatrix}
+2&0&0\\
+0&1&1\\
+0&1&1
+\end{pmatrix},
+\]
+求一个正交矩阵 \(Q\)，使
+\[
+Q^TAQ=D
+\]
+为对角矩阵。
+
+\tcblower
+
+先求特征值。这个矩阵已经把第一个坐标和后两个坐标分开了，所以很适合直接观察：
+\[
+\lambda=2,2,0.
+\]
+
+对应地可以取
+\[
+u_1=(1,0,0)^T,\qquad
+u_2=\frac{1}{\sqrt2}(0,1,1)^T,\qquad
+u_3=\frac{1}{\sqrt2}(0,1,-1)^T.
+\]
+
+其中：
+\begin{itemize}
+  \item \(u_1,u_2\) 都属于特征值 \(2\)；
+  \item \(u_3\) 属于特征值 \(0\)；
+  \item 三个向量两两正交且都已经单位化。
+\end{itemize}
+
+于是可取
+\[
+Q=(u_1,u_2,u_3)
+=
+\begin{pmatrix}
+1&0&0\\
+0&\frac{1}{\sqrt2}&\frac{1}{\sqrt2}\\
+0&\frac{1}{\sqrt2}&-\frac{1}{\sqrt2}
+\end{pmatrix}.
+\]
+
+此时
+\[
+Q^TAQ=\mathrm{diag}(2,2,0).
+\]
+
+这道题最重要的不是算，而是看懂：\important{一旦找到一组标准正交特征向量，正交对角化就结束了。}
+\end{examplebox}
+
+\section{课后分级习题}
+
+\begin{exercisebox}[第 4 章分级习题]
+\textbf{A 组：基础巩固}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 判断矩阵
   \[
   \begin{pmatrix}
@@ -1727,6 +2181,11 @@ y^TQ^TAQy=y^TDy.
   \end{pmatrix}
   \]
   是否为正交矩阵。
+  \item 说明为什么实对称矩阵适合用正交矩阵对角化。
+\end{enumerate}
+
+\textbf{B 组：典型考题}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
   \item 求矩阵
   \[
   \begin{pmatrix}
@@ -1735,18 +2194,56 @@ y^TQ^TAQy=y^TDy.
   0&0&3
   \end{pmatrix}
   \]
-  的特征值。
-  \item 说明为什么实对称矩阵适合用正交矩阵对角化。
-  \item 比较 \(P^{-1}AP=D\) 与 \(P^TAP=D\) 的区别。
+  的特征值，并写出一个正交对角化所用的正交矩阵。
+  \item 设
+  \[
+  A=
+  \begin{pmatrix}
+  1&0&0\\
+  0&2&1\\
+  0&1&2
+  \end{pmatrix},
+  \]
+  求一个正交矩阵 \(Q\)，使 \(Q^TAQ\) 为对角矩阵。
+\end{enumerate}
+
+\textbf{C 组：综合提升}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 比较 \(P^{-1}AP=D\) 与 \(P^TAP=D\) 的区别，并说明它们分别在“相似对角化”和“合同对角化”里扮演什么角色。
+  \item 已知 \(Q\) 为正交矩阵，且
+  \[
+  Q^TAQ=\mathrm{diag}(1,3,3).
+  \]
+  说明二次型 \(x^TAx\) 在变换 \(x=Qy\) 下会变成什么形式，并解释为什么交叉项会消失。
 \end{enumerate}
 \end{exercisebox}
 
 \begin{summarybox}[答案提示]
-\begin{enumerate}
+\textbf{A 组提示}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 是，因为 \(Q^TQ=I\)。
-  \item 特征值为 \(1,3,3\)。
-  \item 因为实对称矩阵有实特征值，且不同特征值对应特征向量正交。
-  \item 前者对应相似变换，后者对应合同变换，研究对象和用途不同。
+  \item 因为实对称矩阵有实特征值，且不同特征值对应的特征向量天然正交。
+\end{enumerate}
+
+\textbf{B 组提示}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 特征值为 \(1,3,3\)。可取单位特征向量
+  \[
+  \frac{1}{\sqrt2}(1,-1,0)^T,\quad
+  \frac{1}{\sqrt2}(1,1,0)^T,\quad
+  (0,0,1)^T.
+  \]
+  \item 特征值为 \(1,1,3\)。属于 \(\lambda=1\) 的单位特征向量可取 \((1,0,0)^T\) 与 \(\frac1{\sqrt2}(0,1,-1)^T\)，属于 \(\lambda=3\) 的单位特征向量可取 \(\frac1{\sqrt2}(0,1,1)^T\)。
+\end{enumerate}
+
+\textbf{C 组提示}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item \(P^{-1}AP=D\) 对应相似变换，研究的是同一个线性变换在不同基下的矩阵；\(P^TAP=D\) 对应合同变换，研究的是二次型在变量替换下的化简。
+  \item 变换后
+  \[
+  x^TAx=y^T(Q^TAQ)y=y_1^2+3y_2^2+3y_3^2.
+  \]
+  因为中间矩阵已经变成对角矩阵，所以没有 \(y_iy_j\ (i\neq j)\) 的交叉项。
 \end{enumerate}
 \end{summarybox}
 
@@ -2008,15 +2505,93 @@ x^TAx=x^T(\lambda x)=\lambda x^Tx.
 \end{itemize}
 \end{summarybox}
 
-\section{重要习题}
+\section{补充例题：带参数的正定判别怎么稳稳拿分}
 
-\begin{exercisebox}[第 5 章重要习题]
-\begin{enumerate}
+\begin{examplebox}[补充例题 3：顺序主子式判别法的标准用法]
+讨论矩阵
+\[
+A(a)=
+\begin{pmatrix}
+2&a&0\\
+a&3&1\\
+0&1&2
+\end{pmatrix}
+\]
+在什么条件下正定。
+
+\tcblower
+
+这是一个实对称矩阵，所以最稳路线就是看顺序主子式：
+\[
+\Delta_1=2>0.
+\]
+
+\[
+\Delta_2=
+\begin{vmatrix}
+2&a\\
+a&3
+\end{vmatrix}
+=6-a^2.
+\]
+
+\[
+\Delta_3=\det(A)
+=
+\begin{vmatrix}
+2&a&0\\
+a&3&1\\
+0&1&2
+\end{vmatrix}
+=2(6-a^2)-2=10-2a^2.
+\]
+
+由 Sylvester 判别法，\(A\) 正定当且仅当
+\[
+\Delta_1>0,\qquad \Delta_2>0,\qquad \Delta_3>0.
+\]
+
+也就是
+\[
+6-a^2>0,\qquad 10-2a^2>0.
+\]
+
+整理得
+\[
+a^2<6,\qquad a^2<5.
+\]
+
+最终更强的限制是
+\[
+|a|<\sqrt5.
+\]
+
+所以矩阵 \(A(a)\) 正定的充要条件是
+\[
+\boxed{|a|<\sqrt5}.
+\]
+\end{examplebox}
+
+\section{课后分级习题}
+
+\begin{exercisebox}[第 5 章分级习题]
+\textbf{A 组：基础巩固}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 把二次型
   \[
   x_1^2+4x_1x_2+3x_2^2
   \]
   写成矩阵形式。
+  \item 判断二次型
+  \[
+  x_1^2-x_2^2+2x_3^2
+  \]
+  的类型。
+  \item 若实对称矩阵 \(A\) 的特征值为 \(1,2,5\)，判断 \(A\) 是否正定。
+\end{enumerate}
+
+\textbf{B 组：典型考题}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
   \item 判断矩阵
   \[
   \begin{pmatrix}
@@ -2026,17 +2601,31 @@ x^TAx=x^T(\lambda x)=\lambda x^Tx.
   \end{pmatrix}
   \]
   是否正定。
-  \item 判断二次型
+  \item 讨论参数 \(a\) 取何值时，矩阵
   \[
-  x_1^2-x_2^2+2x_3^2
+  \begin{pmatrix}
+  1&a&0\\
+  a&2&1\\
+  0&1&3
+  \end{pmatrix}
   \]
-  的类型。
-  \item 若实对称矩阵 \(A\) 的特征值为 \(1,2,5\)，判断 \(A\) 是否正定。
+  正定。
+\end{enumerate}
+
+\textbf{C 组：综合提升}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 将二次型
+  \[
+  2x_1^2+2x_2^2+2x_3^2+2x_1x_2
+  \]
+  通过正交变换化成标准形。
+  \item 已知实对称矩阵 \(A\) 的特征值为 \(0,2,6\)。判断对应二次型的秩、正惯性指数以及它的类型。
 \end{enumerate}
 \end{exercisebox}
 
 \begin{summarybox}[答案提示]
-\begin{enumerate}
+\textbf{A 组提示}
+\begin{enumerate}[label=\textbf{A\arabic*.}]
   \item 对应矩阵为
   \[
   \begin{pmatrix}
@@ -2044,9 +2633,38 @@ x^TAx=x^T(\lambda x)=\lambda x^Tx.
   2&3
   \end{pmatrix}.
   \]
-  \item 正定，因为三个顺序主子式都大于 0。
   \item 不定。
   \item 正定，因为特征值全正。
+\end{enumerate}
+
+\textbf{B 组提示}
+\begin{enumerate}[label=\textbf{B\arabic*.}]
+  \item 正定，因为三个顺序主子式都大于 \(0\)。
+  \item 顺序主子式分别为
+  \[
+  1,\qquad 2-a^2,\qquad 5-3a^2.
+  \]
+  所以正定条件是
+  \[
+  |a|<\sqrt{\frac53}.
+  \]
+\end{enumerate}
+
+\textbf{C 组提示}
+\begin{enumerate}[label=\textbf{C\arabic*.}]
+  \item 先写出对称矩阵
+  \[
+  \begin{pmatrix}
+  2&1&0\\
+  1&2&0\\
+  0&0&2
+  \end{pmatrix},
+  \]
+  再做正交对角化，标准形可写成
+  \[
+  y_1^2+3y_2^2+2y_3^2.
+  \]
+  \item 秩为 \(2\)，正惯性指数为 \(2\)，因为没有负特征值，所以它是半正定而不是正定。
 \end{enumerate}
 \end{summarybox}
 

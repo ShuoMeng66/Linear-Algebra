@@ -34,6 +34,10 @@
    - 解释“这本书某个例题是怎么来的”
    - 把某个知识点讲得更细、更基础
    - 提供更多同类型三阶例题
+   - 解释证明题里“某一步为什么成立”
+   - 检查学生自己的证明、计算过程和半成品思路
+   - 在学生卡住时按提示粒度逐步引导
+   - 处理 OCR 文本、凌乱草稿和错题复盘
    - 面向补考同学做重点梳理与易错点提醒
 
 7. 修改 skill 时，默认照顾零基础读者  
@@ -45,6 +49,7 @@
    - [cherry-studio/assistants.json](cherry-studio/assistants.json)
    - [skills/from-zero-linear-algebra-tutor/SKILL.md](skills/from-zero-linear-algebra-tutor/SKILL.md)
    - [skills/from-zero-linear-algebra-tutor/references/chapter_map.md](skills/from-zero-linear-algebra-tutor/references/chapter_map.md)
+   - [skills/from-zero-linear-algebra-tutor/references/coaching_workflows.md](skills/from-zero-linear-algebra-tutor/references/coaching_workflows.md)
    - [skills/from-zero-linear-algebra-tutor/references/response_patterns.md](skills/from-zero-linear-algebra-tutor/references/response_patterns.md)
    - [skills/from-zero-linear-algebra-tutor/references/system_prompt.md](skills/from-zero-linear-algebra-tutor/references/system_prompt.md)
 
@@ -81,6 +86,10 @@
    - 例题来源与例题精讲
    - 知识点细化讲解
    - 同类题扩展
+   - 证明题某一步解释
+   - 学生思路检查与最小修改
+   - 做到一半后的提示式引导
+   - OCR 文本整理与继续讲解
    - 补考复习模式
 
 3. 例子优先用三阶矩阵  
@@ -91,7 +100,7 @@
 
 5. 修改后至少做两项检查  
    - 检查 `assistants.json` 是否仍是合法 JSON
-   - 检查 README 中的部署流程、模型建议、订阅地址和示例问法是否仍然匹配
+   - 检查 README 中的部署流程、模型建议、订阅地址、示例问法和批改类用法是否仍然匹配
 
 ## 编译检查
 
