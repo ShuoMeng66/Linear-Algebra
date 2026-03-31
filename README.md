@@ -183,7 +183,7 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可
 
 - 助手订阅文档：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
 
-我在你本机的 Cherry Studio 里已经打开到 `设置 -> 数据设置` 这一层，界面大致如下：
+Cherry Studio 打开到 `设置 -> 数据设置` 这一层，界面大致如下：
 
 ![本机 Cherry Studio 的数据设置界面](assets/images/readme/cherry-window-max.png)
 
