@@ -146,7 +146,19 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 
 #### 1. 安装 Cherry Studio
 
-- 官方下载页：[Cherry Studio Download](https://docs.cherry-ai.com/en-us/cherrystudio/download)
+- 官方客户端下载页：[Cherry Studio 客户端下载](https://docs.cherry-ai.com/cherry-studio/download)
+
+截至 `2026-03-31`，我核对官网客户端下载页时，页面显示当前官方版本为 `v1.8.4`。后续如果版本更新，请以下载页实时显示为准。
+
+大多数 Windows 同学直接点：
+
+- `Windows 版本` -> `安装版 (Setup)` -> `x64 版本`
+
+只有在你明确知道自己用的是 `ARM` 设备时，再去选 `ARM64`。
+
+![Cherry Studio 官网客户端下载页](assets/images/readme/cherry-download-page-zh.png)
+
+上图可以直接看到官网把 `Windows / macOS / Linux` 的下载入口分开列出来了；对大多数使用普通 Windows 笔记本或台式机的同学来说，直接下载 `Windows x64 安装版` 就可以。
 
 #### 2. 准备模型服务
 
@@ -171,6 +183,17 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可
 
 - 助手订阅文档：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
 
+我在你本机的 Cherry Studio 里已经打开到 `设置 -> 数据设置` 这一层，界面大致如下：
+
+![本机 Cherry Studio 的数据设置界面](assets/images/readme/cherry-window-max.png)
+
+如果你是第一次找这个入口，可以先记住一条最短路径：
+
+- 打开 Cherry Studio
+- 进入设置
+- 点左侧的 `数据设置`
+- 再按照官方文档里的“助手订阅配置”继续往下配
+
 导入步骤：
 
 1. 打开 Cherry Studio
@@ -185,6 +208,10 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 
 6. 保存并刷新助手列表
 7. 选择 `从零线代教材助教`
+
+官方文档中的“助手订阅配置”页面长这样，读者可以对着这张图继续操作：
+
+![Cherry Studio 助手订阅配置文档截图](assets/images/readme/cherry-assistants-docs.png)
 
 ### 建议使用的模型
 
