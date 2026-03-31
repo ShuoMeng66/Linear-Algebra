@@ -162,19 +162,21 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 
 #### 2. 准备模型服务
 
-Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可以把“模型”理解成讲题的大脑，把 “API Key / Token” 理解成使用凭证。
+Cherry Studio 是客户端，真正负责回答的是你接入的模型。可以把“模型”理解成讲题的大脑，把 `API Key / Token` 理解成使用凭证。
 
-如果你是第一次接触，最推荐两条路线：
+如果是第一次接触，最推荐两条路线：
 
-- 路线 A：先用 ModelScope
-  - 文档：[Cherry Studio ModelScope](https://docs.cherry-ai.com/pre-basic/providers/modelscope)
-  - 优点：不需要自己部署、上手快、对零基础同学最友好
-- 路线 B：已有 API Key
+- 路线 A：先用阿里云百炼
+  - 文档：[Cherry Studio 阿里云百炼](https://docs.cherry-ai.com/pre-basic/providers/a-li-yun-bai-lian)
+  - 推荐先试：百炼中带免费额度或低门槛的 `Qwen` 系列，例如 `qwen3.5-flash`、`qwen3-30b-a3b` 等
+  - 优点：国内接入更顺、配置路径清楚、对零基础同学更友好
+- 路线 B：已有其他 API Key
   - 文档：[模型服务商配置](https://docs.cherry-ai.com/pre-basic/settings/providers)
-  - 适合已经在用 OpenAI、Claude、Gemini 或 DeepSeek 的同学
+  - 适合已经在用 DeepSeek、Gemini、OpenAI、Claude 等模型的同学
 
 补充提醒：
 
+- 如果主要是配合这本教材学习基础概念、例题和课后习题，优先从百炼里的 `Qwen` 免费路线开始通常就够用了。
 - 中国大陆用户使用 OpenAI 官方 API 往往还需要额外处理网络与支付问题。
 - 如果只是为了稳定学习这本教材，没必要一开始就选最贵的模型。
 - 如果海外模型连接超时，可以检查 Cherry Studio 的 `代理模式` 设置。
@@ -202,28 +204,33 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 
 订阅成功后，左侧通常会出现 `教育 / 线性代数 / 教材伴学` 等分类，表示订阅已被正确识别。
 
-，在确定成功订阅后，在 Cherry Studio 的`知识库`中创建知识库并且上传本书的pdf。
+确定订阅成功后，可在 Cherry Studio 的 `知识库` 中创建知识库并上传本书的 PDF，这样助教在解释例题、知识点和证明步骤时会更贴近教材原文。
 
 ### 建议使用的模型
 
 | 你的场景 | 建议模型 | 适合原因 |
 | --- | --- | --- |
-| 第一次试用、预算敏感 | `qwen3-max` / `qwen3.5-plus` | 速度快、成本低，百炼平台中有大量免费API |
-| 希望讲得更稳、更像老师带着你学 | `claude-sonnet-4-5` / `gemini-2.5-pro` | 更适合长篇解释、分步骤拆解和连续追问 |
-| 卡在难题、压轴题、反复追问都想讲透 | `deepseek-reasoner` / `gpt-5` | 更适合多步推理、复杂例题和细致展开 |
+| 第一次试用、完全零基础 | `qwen3.5-flash` / `qwen3-30b-a3b` | 在阿里云百炼中更容易接入，起步成本低，讲教材主线、基础概念和常规题通常已经够用 |
+| 希望长期稳定使用、讲解更细一点 | `qwen3.5-plus` | 仍然是 `Qwen` 路线，解释更稳，适合连续追问、例题精讲和知识点细化 |
+| 卡在难题、综合题、长证明题 | `deepseek-reasoner` / `gemini-2.5-pro` | 更适合多步推理、复杂例题、长链条证明和反复追问 |
+| 已经有自己的海外模型使用习惯 | `deepseek-chat` / `gemini-2.5-flash` / `gpt-5-mini` | 可以直接沿用现有服务商配置，不需要重新适应工作流 |
 
 官方模型资料：
+
 - [阿里云百炼平台](https://bailian.console.aliyun.com)
-- [Anthropic Claude 模型总览](https://docs.anthropic.com/zh-CN/docs/about-claude/models/overview)
+- [阿里云百炼模型列表与价格](https://help.aliyun.com/zh/model-studio/model-pricing)
+- [Cherry Studio 阿里云百炼接入说明](https://docs.cherry-ai.com/pre-basic/providers/a-li-yun-bai-lian)
 - [Google Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-v2)
 - [DeepSeek 模型与价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
+- [OpenAI GPT-5 mini](https://platform.openai.com/docs/models/gpt-5-mini)
 
 最省事的选择顺序：
 
-1. 完全没接触过 AI：先用 `ModelScope`
-2. 想要性价比：优先试 `deepseek-chat`
-3. 想要更强的难题讲解能力：再切到 `deepseek-reasoner`
-4. 已经稳定使用 OpenAI / Claude / Gemini：再按自己习惯切更强模型
+1. 完全没接触过 AI：先在 Cherry Studio 里接入 `阿里云百炼`
+2. 第一次使用教材助教：优先试百炼中带免费额度的 `Qwen` 模型，例如 `qwen3.5-flash`
+3. 如果基础题能讲明白，但想要更稳的细讲能力：再升级到 `qwen3.5-plus`
+4. 如果开始频繁处理长证明题、综合题、压轴题：再考虑 `deepseek-reasoner` 或 `gemini-2.5-pro`
+5. 已经稳定使用其他服务商：再按自己的账户和预算切换到更熟悉的模型
 
 ### 如何提问，效果最好
 
