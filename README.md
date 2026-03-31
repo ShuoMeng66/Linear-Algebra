@@ -19,6 +19,7 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
 - 例题以三阶矩阵为主，更贴近常见考试题型。
 - 内容同时照顾零基础和补考同学，重视“为什么这么做”“哪里最容易错”“怎么拿分”。
 - 在版式与叙述中加入 MyGO!!!!! 角色陪学元素，降低阅读门槛，增强连续阅读体验。
+- 额外提供了一个贴合本教材主线的 Cherry Studio 教材助教 skill，可用于例题拆解、知识点细讲和同类题扩展。
 
 ## 内容主线
 
@@ -46,6 +47,12 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
 ├─ README.md
 ├─ CONTRIBUTING.md
 ├─ THIRD_PARTY_ASSETS.md
+├─ cherry-studio
+│  └─ assistants.json
+├─ skills
+│  └─ from-zero-linear-algebra-tutor
+│     ├─ SKILL.md
+│     └─ references
 ├─ src
 │  └─ from_zero_linear_algebra.tex
 ├─ dist
@@ -69,6 +76,179 @@ git@github.com:ShuoMeng66/Linear-Algebra.git
    聚焦实对称矩阵与正交矩阵，说明它为何是二次型的直接入口。
 5. 二次型与正定矩阵  
    统一二次型、顺序主子式、特征值与正定性判断。
+
+## Cherry Studio 教材助教
+
+本仓库额外附带了一个面向 Cherry Studio 的教材助教配置文件，目标不是做“泛泛的线性代数机器人”，而是尽量贴合这本教材自己的讲法，帮助同学：
+
+- 追问“这本书某个例题是怎么来的”
+- 让某个知识点讲得更细、更基础
+- 多给几道同类型题，并且继续按本书主线解释
+- 在补考复习时，快速抓住容易丢分的点
+
+当前可直接用于 Cherry Studio 助手订阅的文件是：
+
+```text
+cherry-studio/assistants.json
+```
+
+如果你把本仓库推送到 GitHub 主分支，那么常用订阅地址可以写成：
+
+```text
+https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
+```
+
+## 零基础部署流程
+
+这一部分默认你完全不懂 AI、也没接触过模型和 API。
+
+### 1. 先装 Cherry Studio
+
+先去 Cherry Studio 官方下载页安装客户端：
+
+- 官方下载页：<https://docs.cherry-ai.com/en-us/cherrystudio/download>
+
+装好以后直接打开即可。
+
+### 2. 准备一个“模型服务”
+
+Cherry Studio 本身是客户端，真正负责回答问题的是你接入的模型。  
+你可以把“模型”理解成真正给你讲题的 AI 大脑，把“API Key / Token”理解成它的使用凭证。
+
+如果你是第一次接触，最推荐两条路线：
+
+#### 路线 A：先试用，最省事
+
+直接走 Cherry Studio 文档里的 ModelScope 路线：
+
+- Cherry Studio 的 ModelScope 接入文档：<https://docs.cherry-ai.com/pre-basic/providers/modelscope>
+
+这条路线的优点是：
+
+- 不需要自己部署模型
+- Cherry 文档步骤比较完整
+- 文档写明每天有 `2000` 次免费 API 调用额度（以官方最新规则为准）
+
+#### 路线 B：你已经有 API Key
+
+如果你已经有 OpenAI、Anthropic、Google Gemini 或 DeepSeek 的 API Key，也可以直接在 Cherry Studio 里接入对应服务商：
+
+- 模型服务商配置总览：<https://docs.cherry-ai.com/pre-basic/settings/providers>
+
+补充提醒：
+
+- Cherry Studio 的 OpenAI 文档明确提到，中国大陆用户无法直接访问 OpenAI 官方 API，需要自行解决网络与支付问题。
+- 如果你只是为了稳定地学这本教材，通常没有必要一开始就选最贵的模型。
+- 如果你使用的是 OpenAI / Claude / Gemini 这类海外模型，并且遇到连接超时，可以再看 Cherry Studio 的常规设置文档，重点检查 `代理模式`：<https://docs.cherry-ai.com/pre-basic/settings/general>
+
+### 3. 把教材助教导入 Cherry Studio
+
+Cherry Studio 的助手订阅配置文档在这里：
+
+- 助手订阅配置：<https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe>
+
+照着做时，可以按下面这条顺序：
+
+1. 打开 Cherry Studio
+2. 进入设置
+3. 找到“数据设置”或“助手订阅配置”
+4. 新增一个订阅地址
+5. 把下面这个地址粘进去
+
+```text
+https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
+```
+
+6. 保存并刷新助手列表
+7. 在助手列表中找到 `从零线代教材助教`
+
+### 4. 选择模型并开始提问
+
+导入成功后：
+
+1. 新建一个对话
+2. 选择助手 `从零线代教材助教`
+3. 再选择一个你已经配置好的模型
+4. 开始提问
+
+## 建议使用的模型
+
+如果你完全不懂怎么选，直接按下面这张表来就够了：
+
+| 你的场景 | 建议模型 | 适合原因 |
+| --- | --- | --- |
+| 第一次试用、预算敏感 | `deepseek-chat` / `gpt-5-mini` | 速度快、成本低，讲基础概念和常规题通常已经够用 |
+| 希望讲得更稳、更像老师带着你学 | `claude-sonnet-4-5` / `gemini-2.5-pro` | 更适合长篇解释、分步骤拆解和连续追问 |
+| 卡在难题、压轴题、反复追问都想讲透 | `deepseek-reasoner` / `gpt-5` | 更适合多步推理、复杂例题和细致展开 |
+
+对应的官方模型资料：
+
+- OpenAI GPT-5 系列：<https://platform.openai.com/docs/models/gpt-5>
+- OpenAI GPT-5 mini：<https://platform.openai.com/docs/models/gpt-5-mini>
+- Anthropic Claude 模型总览：<https://docs.anthropic.com/zh-CN/docs/about-claude/models/overview>
+- Google Gemini 2.5 Pro：<https://ai.google.dev/gemini-api/docs/models/gemini-v2>
+- DeepSeek 模型与价格：<https://api-docs.deepseek.com/zh-cn/quick_start/pricing>
+
+补充说明：
+
+- OpenAI、Claude、Gemini 这几家模型更新很快，如果你的服务商列表里没有完全相同的名字，优先选择同家族里“当前最新的 mini / sonnet / pro / flagship”版本即可。
+- 如果你只是学这本教材，先选一个稳定、便宜、回复快的模型往往更合适，没必要第一天就上最贵档。
+
+如果你只想先把这个教材助教跑起来，我建议优先顺序是：
+
+1. 没有任何 AI 使用经验：先用 `ModelScope` 路线试起来
+2. 想要性价比：优先试 `deepseek-chat`
+3. 想要更强的难题讲解能力：再切到 `deepseek-reasoner`
+4. 如果你已经稳定使用 OpenAI / Claude / Gemini，再考虑切到更强模型
+
+## 如何提问，效果最好
+
+虽然这个助手会尽量贴合这本书，但如果你能多给一点定位信息，效果会明显更好。
+
+最推荐的提问方式：
+
+- 直接说章节名
+- 直接说节标题
+- 直接说“例题精讲 1 / 例题精讲 2”
+- 直接把题目打出来
+- 最好附一张截图
+
+例如你可以这样问：
+
+- “请按《从零开始的线性代数教程》第一章‘例题精讲 2’的思路，详细解释基础解系为什么这样写，不要跳步。”
+- “请把第三章里特征向量为什么还要回到消元法再讲细一点，再给我两个三阶矩阵例子。”
+- “我在补考，麻烦你只按这本书第五章的主线，讲顺序主子式判别法怎么快速拿分。”
+
+## 一个完整使用示例
+
+### 示例提问
+
+```text
+请按照《从零开始的线性代数教程》第一章“例题精讲 2：三阶齐次方程组的通解与基础解系”的风格，
+详细解释为什么要先找主变量和自由变量，再写基础解系。
+我现在是补考复习，请不要跳步。
+最后再给我一道同类型的三阶题让我练习，并附上答案。
+```
+
+### 你应该期待它做什么
+
+一个好的回答通常会包含这些部分：
+
+1. 先告诉你这题在考什么
+2. 再说它和前面“Gauss 消元、rank、主变量/自由变量”的关系
+3. 把消元过程一步一步写出来
+4. 解释为什么基础解系要按“自由变量取参数”的方式构造
+5. 提醒你哪里最容易丢分
+6. 再给你一道新的同类型三阶题
+
+### 如果回答还不够好，怎么追问
+
+你可以继续补一句：
+
+- “请把每一步行变换都写出来”
+- “请再解释一下为什么自由变量个数等于未知数个数减 rank”
+- “请把这道题和非齐次方程组的‘特解 + 齐次通解’联系起来”
+- “再给我一题难半档的变式”
 
 ## 编译方式
 
