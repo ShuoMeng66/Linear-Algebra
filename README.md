@@ -181,7 +181,11 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可
 
 #### 3. 导入教材助教
 
-- 官方文档里“助手订阅配置”相关页面：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
+- 官方文档里仍能看到“助手订阅配置”相关页面：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
+
+截至 `2026-03-31`，当前版本 Cherry Studio 的实际导入入口不在 `设置 -> 数据设置` 中。
+
+可按下面这条路径导入：
 
 1. 打开 Cherry Studio
 2. 点击顶部的 `智能体`
@@ -196,28 +200,18 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可
 https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
 ```
 
-订阅成功后，我在你本机上已经看到左侧出现：
+订阅成功后，左侧通常会出现 `教育 / 线性代数 / 教材伴学` 等分类，表示订阅已被正确识别。
 
-- `教育`
-- `线性代数`
-- `教材伴学`
+下图展示的是 `助手库 -> 从外部导入` 的界面示意。上半部分是 `URL / 文件 / 输入 JSON URL`，下半部分才是需要使用的 `助手添加订阅 / 订阅源地址 / 订阅` 区域。
 
-这三个分类计数都变成了 `1`，说明这个订阅地址已经被 Cherry Studio 正常识别。
-
-![本机 Cherry Studio 中订阅成功后的助手库界面](assets/images/readme/cherry-assistant-library-subscribed.png)
-
-上图就是我在你机器上实测订阅成功后的界面，左侧已经能看到 `教育 / 线性代数 / 教材伴学` 三个分类。
-
-点 `从外部导入` 后，会弹出一个导入窗口。这个窗口上半部分是 `URL / 文件 / 输入 JSON URL`，下半部分才是我们真正要用的 `添加订阅 / 订阅源地址 / 订阅`。
-
-![本机 Cherry Studio 的从外部导入弹窗](assets/images/readme/cherry-after-subscribe-attempt.png)
+![Cherry Studio 助手库与从外部导入弹窗示意](assets/images/readme/cherry-after-subscribe-attempt.png)
 
 补充提醒：
 
-- 你这台机器当前这个窗口高度下，`从外部导入` 弹窗的下半部分可能会被压得不够明显。
-- 如果你一眼没看到 `订阅源地址`，不要慌，直接按 `Tab` 键也能切过去。
-- 我实测当前焦点顺序大致是：`Close -> URL -> 输入 JSON URL -> 订阅源地址 -> 订阅 / 退订`
-- 所以最稳妥的做法是：打开弹窗后，按 `Tab` 直到焦点落到 `订阅源地址`，再粘贴链接并订阅。
+- 如果窗口高度较小，`从外部导入` 弹窗的下半部分可能会不够显眼。
+- 如果没有第一眼看到 `订阅源地址`，可以直接按 `Tab` 键切换焦点。
+- 常见焦点顺序大致是：`Close -> URL -> 输入 JSON URL -> 订阅源地址 -> 订阅 / 退订`
+- 因此最稳妥的做法是：打开弹窗后，按 `Tab` 直到焦点落到 `订阅源地址`，再粘贴链接并订阅。
 
 ### 建议使用的模型
 
