@@ -181,12 +181,7 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。你可
 
 #### 3. 导入教材助教
 
-- 官方文档里仍能看到“助手订阅配置”相关页面：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
-
-但我在你本机 `2026-03-31` 这次实际打开并操作后确认：  
-当前这版 Cherry Studio 的真实入口，不是在 `设置 -> 数据设置` 里。
-
-我在你机器上亲测走通的路径是：
+- 官方文档里“助手订阅配置”相关页面：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
 
 1. 打开 Cherry Studio
 2. 点击顶部的 `智能体`
