@@ -208,14 +208,12 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 
 | 你的场景 | 建议模型 | 适合原因 |
 | --- | --- | --- |
-| 第一次试用、预算敏感 | `qwen3-max` / `qwen3.5-plus` | 速度快、成本低，讲基础概念和常规题通常已经够用 |
+| 第一次试用、预算敏感 | `qwen3-max` / `qwen3.5-plus` | 速度快、成本低，百炼平台中有大量免费API |
 | 希望讲得更稳、更像老师带着你学 | `claude-sonnet-4-5` / `gemini-2.5-pro` | 更适合长篇解释、分步骤拆解和连续追问 |
 | 卡在难题、压轴题、反复追问都想讲透 | `deepseek-reasoner` / `gpt-5` | 更适合多步推理、复杂例题和细致展开 |
 
 官方模型资料：
-
-- [OpenAI GPT-5 系列](https://platform.openai.com/docs/models/gpt-5)
-- [OpenAI GPT-5 mini](https://platform.openai.com/docs/models/gpt-5-mini)
+-[阿里云百炼平台](https://bailian.console.aliyun.com)
 - [Anthropic Claude 模型总览](https://docs.anthropic.com/zh-CN/docs/about-claude/models/overview)
 - [Google Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-v2)
 - [DeepSeek 模型与价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
