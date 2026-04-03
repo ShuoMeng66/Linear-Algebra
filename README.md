@@ -2,7 +2,7 @@
 
 面向零基础、自学入门与补考复习的中文线性代数开源讲义。
 
-这个项目尝试把线性代数从“定义堆叠”改写成一条更自然的学习主线：先解决线性方程组，再引出矩阵运算，随后过渡到特征值分解、正交对角化，最后收束到二次型与正定矩阵。整套内容使用 LaTeX 编写，并配套了一个贴合本教材主线的 Cherry Studio 教材助教。
+这个项目尝试把线性代数从“定义堆叠”改写成一条更自然的学习主线：先解决线性方程组，再引出矩阵运算，随后过渡到特征值分解、正交对角化，最后收束到二次型与正定矩阵。整套内容使用 LaTeX 编写，并配套了 Cherry Studio 助手订阅配置、可手动部署的学习 Agent 提示词，以及围绕本书编写的教材助教 skill。
 
 ![教材封面预览](assets/images/preview/cover.png)
 
@@ -11,7 +11,10 @@
 - 直接阅读讲义 PDF：[dist/from_zero_linear_algebra.pdf](dist/from_zero_linear_algebra.pdf)
 - 查看 LaTeX 源码：[src/from_zero_linear_algebra.tex](src/from_zero_linear_algebra.tex)
 - 导入 Cherry Studio 助教：[cherry-studio/assistants.json](cherry-studio/assistants.json)
+- 手动部署 Cherry Studio 学习 Agent：[cherry-studio/agent-deployment.md](cherry-studio/agent-deployment.md)
+- 复制 Agent 提示词：[cherry-studio/linear-algebra-learning-agent.prompt.md](cherry-studio/linear-algebra-learning-agent.prompt.md)
 - 查看教材助教 skill 说明：[skills/from-zero-linear-algebra-tutor/SKILL.md](skills/from-zero-linear-algebra-tutor/SKILL.md)
+- 运行内容校验脚本：[scripts/validate_content.py](scripts/validate_content.py)
 - 查看贡献规范：[CONTRIBUTING.md](CONTRIBUTING.md)
 - 查看当前版本说明：[RELEASE_NOTES.md](RELEASE_NOTES.md)
 
@@ -40,6 +43,20 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 ```
 
 然后在助手列表中选择 `从零线代教材助教` 即可。
+
+### 想手动创建学习 Agent
+
+直接按这个文档一步步填：
+
+```text
+cherry-studio/agent-deployment.md
+```
+
+真正粘贴进 Cherry Studio `添加 Agent` 窗口里的提示词在这里：
+
+```text
+cherry-studio/linear-algebra-learning-agent.prompt.md
+```
 
 ### 想在本地修改源码
 
@@ -80,9 +97,11 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 ## 当前版本亮点
 
 - 五章主线已经统一收束，避免内容发散。
-- 讲义中补入了更多典型三阶例题。
+- 修正了讲义里已核对出的数学错误，尤其是第 1 章两处习题答案提示错误。
+- 讲义中补入了更多典型三阶例题，并新增了每章的选择 / 填空快练与速判技巧。
 - 每章增加了更系统的课后练习，并按 `A / B / C` 分级。
-- Cherry Studio 助教已经支持例题精讲、知识点细讲、证明题拆步、思路批改、卡壳提示和 OCR 文本整理。
+- Cherry Studio 现在同时提供“助手订阅”和“手动创建学习 Agent”两条部署路线。
+- 新增 `scripts/validate_content.py`，可用 `sympy` 一键复核例题、参数题和关键答案提示。
 - `README`、`CONTRIBUTING`、`LICENSE` 与 skill 说明已经同步对齐，适合继续开源迭代。
 
 ## 仓库结构
@@ -95,11 +114,15 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 ├─ CONTRIBUTING.md
 ├─ THIRD_PARTY_ASSETS.md
 ├─ cherry-studio/
-│  └─ assistants.json
+│  ├─ assistants.json
+│  ├─ agent-deployment.md
+│  └─ linear-algebra-learning-agent.prompt.md
 ├─ skills/
 │  └─ from-zero-linear-algebra-tutor/
 │     ├─ SKILL.md
 │     └─ references/
+├─ scripts/
+│  └─ validate_content.py
 ├─ src/
 │  └─ from_zero_linear_algebra.tex
 ├─ dist/
@@ -112,8 +135,9 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 
 - `src/`：LaTeX 源码
 - `dist/`：可直接阅读或发布的 PDF 成品
-- `cherry-studio/`：可直接订阅的助手配置
+- `cherry-studio/`：Cherry Studio 助手订阅配置、学习 Agent 提示词与手动部署说明
 - `skills/`：教材助教 skill 本体与参考资料
+- `scripts/`：用于校验讲义内容与答案提示的脚本
 - `assets/`：封面、角色图与 README 预览图
 
 ## 讲义结构
@@ -129,9 +153,14 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 5. 二次型与正定矩阵  
    统一二次型、顺序主子式、特征值与正定性判断。
 
-## Cherry Studio 教材助教
+## Cherry Studio 助手 / Agent
 
-这个助教不是泛用线性代数答题器，而是围绕这本教材本身服务的“伴学型助教”。
+这个项目现在给了两条 Cherry Studio 路线：
+
+- 路线 A：直接导入 `assistants.json`，用现成的教材助教或学习 Agent
+- 路线 B：按 `智能体 -> 添加 Agent` 手动创建一个更适合长期陪学的线代学习 Agent
+
+它们都不是泛用线性代数答题器，而是围绕这本教材本身服务的“伴学型配置”。
 
 它比较适合做这些事：
 
@@ -148,7 +177,7 @@ xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 
 - 官方客户端下载页：[Cherry Studio 客户端下载](https://docs.cherry-ai.com/cherry-studio/download)
 
-截至 `2026-03-31`，我核对官网客户端下载页时，页面显示当前官方版本为 `v1.8.4`。后续如果版本更新，请以下载页实时显示为准。
+截至 `2026-04-03`，我核对官网客户端下载页时，页面显示当前官方版本为 `v1.8.4`。后续如果版本更新，请以下载页实时显示为准。
 
 大多数 Windows 同学直接点：
 
@@ -181,7 +210,17 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。可以
 - 如果只是为了稳定学习这本教材，没必要一开始就选最贵的模型。
 - 如果海外模型连接超时，可以检查 Cherry Studio 的 `代理模式` 设置。
 
-#### 3. 导入教材助教
+如果你想走你截图里的 `添加 Agent` 这条路线，还要额外注意一件事：
+
+- 官方文档：[Cherry Studio Agent](https://docs.cherry-ai.com/advanced-basic/agent)
+- Cherry Studio 官方 Agent 文档提到，`Agent` 功能从 `v1.7.0.alpha` 开始支持，当前走的是 `Anthropic` 接口路线；如果你手动配服务商，`Base URL` 需要以 `/v1/` 结尾。
+
+也就是说：
+
+- 只是导入本仓库里的助手订阅：常规模型服务商就可以
+- 想手动创建 `Agent`：优先确认你已经把对应的 Agent 模型接口接好了
+
+#### 3. 导入教材助教 / 学习助手
 
 - 官方文档里仍能看到“助手订阅配置”相关页面：[Assistants Subscribe](https://docs.cherry-ai.com/pre-basic/data-settings/assistants-subscribe)
 
@@ -202,9 +241,46 @@ Cherry Studio 是客户端，真正负责回答的是你接入的模型。可以
 https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/assistants.json
 ```
 
-订阅成功后，左侧通常会出现 `教育 / 线性代数 / 教材伴学` 等分类，表示订阅已被正确识别。
+订阅成功后，左侧通常会出现 `教育 / 线性代数 / 教材伴学` 等分类。当前订阅里已经放了两个可直接用的配置：
 
-确定订阅成功后，可在 Cherry Studio 的 `知识库` 中创建知识库并上传本书的 PDF，这样助教在解释例题、知识点和证明步骤时会更贴近教材原文。
+- `从零线代教材助教`
+- `从零线代学习 Agent`
+
+确定订阅成功后，可在 Cherry Studio 的 `知识库` 中创建知识库并上传本书的 PDF，这样助手在解释例题、知识点和证明步骤时会更贴近教材原文。
+
+#### 4. 手动创建学习 Agent（对应 `智能体 -> 添加 Agent`）
+
+如果你更想按自己截图里的界面手动配置，而不是直接订阅，可按下面这套最稳的填法：
+
+1. 打开 Cherry Studio，进入 `智能体`
+2. 点击 `添加 Agent`
+3. 名称推荐填：`从零线代学习 Agent`
+4. 模型：选择你当前已经接好的、讲题比较稳的模型
+5. `Git Bash`：优先用自动发现；如果没有，再手动选择你本机的 `bash.exe`
+6. `权限模式`：优先选 `普通模式`；如果你的版本里有 `计划模式`，也可以选它，但不要开 `全自动模式`
+7. 把下面这个文件里的内容完整复制进提示词区域：
+
+```text
+cherry-studio/linear-algebra-learning-agent.prompt.md
+```
+
+如果你想少走弯路，也可以直接打开这份说明照着填：
+
+```text
+cherry-studio/agent-deployment.md
+```
+
+这套手动 Agent 配置更强调三件事：
+
+- 语言不生硬，适合补考和初学者
+- 计算、参数分类、选择填空会先做自检
+- 会优先按“讲懂 -> 批改 -> 提示 -> 补练习”的学习流程来陪跑
+
+关于权限模式，再单独提醒一句：
+
+- 这个 Agent 的主要用途是帮助读者学习，不是替你在本地环境里大范围执行命令
+- 所以只建议开 `普通模式`，或者在你明确知道自己需要时开 `计划模式`
+- **不要开启 `全自动模式`**，因为这会带来不必要的安全风险
 
 ### 建议使用的模型
 
@@ -254,6 +330,8 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 - “这是我写的证明，你帮我看是不是从第二步开始就不严密了，先沿我的思路改，不要直接换方法。”
 - “我只做到增广矩阵化成阶梯形，后面不会写了。先别给完整答案，只告诉我下一步应该盯住什么。”
 - “我在补考，麻烦你只按这本书第五章的主线，讲顺序主子式判别法怎么快速拿分。”
+- “这道选择题请先告诉我速判思路，再给答案，不要只报字母。”
+- “这道参数题你先帮我判断哪几种情形，再一类一类验，不要直接跳结论。”
 
 ### 一个完整使用示例
 
@@ -289,6 +367,12 @@ https://raw.githubusercontent.com/ShuoMeng66/Linear-Algebra/main/cherry-studio/a
 cd src
 xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
 xelatex -interaction=nonstopmode -halt-on-error from_zero_linear_algebra.tex
+```
+
+如果你想先把本次改动里最关键的例题、参数题和答案提示跑一遍校验，可先执行：
+
+```bash
+python scripts/validate_content.py
 ```
 
 编译后将生成的 PDF 覆盖到 `dist/` 即可：

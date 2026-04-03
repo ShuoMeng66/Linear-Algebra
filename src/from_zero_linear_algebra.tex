@@ -791,11 +791,11 @@ t\begin{pmatrix}
 \section{课后分级习题}
 
 \begin{summarybox}[题型说明]
-下面这组补充题，主要根据中南大学线性代数平时练习与历年试卷的常见题型改编，并按本书主线重排成 `A/B/C` 三档：
+下面这组补充题，主要根据中南大学线性代数平时练习与历年试卷的常见题型改编，并按本书主线重排成 \texttt{A/B/C} 三档：
 \begin{itemize}
-  \item `A` 组先保底，专门练会消元、秩、基础解系这些最核心动作；
-  \item `B` 组接近期中期末常见大题的结构；
-  \item `C` 组强调综合判断，适合补考前压轴训练。
+  \item \texttt{A} 组先保底，专门练会消元、秩、基础解系这些最核心动作；
+  \item \texttt{B} 组接近期中期末常见大题的结构；
+  \item \texttt{C} 组强调综合判断，适合补考前压轴训练。
 \end{itemize}
 \end{summarybox}
 
@@ -828,8 +828,8 @@ t\begin{pmatrix}
   \[
   \begin{cases}
   x_1+x_2+x_3=1,\\
-  2x_1+(a+1)x_2+3x_3=2,\\
-  x_1+2x_2+a x_3=3-a
+  2x_1+(a+1)x_2+3x_3=3,\\
+  x_1+2x_2+a x_3=2
   \end{cases}
   \]
   无解、有唯一解或有无穷多个解；并在有无穷多个解时写出通解。
@@ -864,7 +864,20 @@ t\begin{pmatrix}
 \begin{summarybox}[答案提示]
 \textbf{A 组提示}
 \begin{enumerate}[label=\textbf{A\arabic*.}]
-  \item 先消元，可得唯一解 \((0,1,0)^T\)。
+  \item 这题其实不是唯一解，而是有无穷多解。通解可写成
+  \[
+  \begin{pmatrix}
+  x_1\\x_2\\x_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  0\\1\\0
+  \end{pmatrix}
+  +
+  t\begin{pmatrix}
+  -2\\1\\1
+  \end{pmatrix}.
+  \]
   \item 通解可写成 \(t(-1,0,1)^T\)，基础解系由这一个向量组成。
   \item 有 \(4-2=2\) 个向量。
 \end{enumerate}
@@ -874,7 +887,7 @@ t\begin{pmatrix}
   \item 先看系数行列式 \(a(a-2)\)。其中 \(a=0\) 时无解，\(a=2\) 时有无穷多解，其通解可写成
   \[
   \begin{pmatrix}
-  1\\-t\\t
+  0\\1-t\\t
   \end{pmatrix}.
   \]
   \item 先取一个特解，比如 \(\eta_1\)。再看 \(\eta_1-\eta_2=(1,-1,1)^T\)，它就是对应齐次方程组的一条方向，所以通解为
@@ -888,6 +901,47 @@ t\begin{pmatrix}
   \item 方程组 \(I\) 的基础解系可取 \((1,-1,0,0)^T,(0,0,1,-1)^T\)；方程组 \(II\) 的基础解系可取 \((1,1,0,0)^T,(0,0,1,-1)^T\)。公共解由 \((0,0,1,-1)^T\) 张成。
   \item 自由变量个数是 \(4-2=2\)，因此不可能只有唯一解。
 \end{enumerate}
+\end{summarybox}
+
+\section{考前 5 分钟：选择 / 填空快练}
+
+\begin{exercisebox}[第 1 章选择与填空快练]
+\textbf{选择题}
+\begin{enumerate}[label=\textbf{选\arabic*.}]
+  \item 设三元齐次线性方程组的系数矩阵秩为 \(2\)，则它的解空间维数为
+  \[
+  \text{A. }0 \qquad \text{B. }1 \qquad \text{C. }2 \qquad \text{D. }3
+  \]
+  \item 对非齐次方程组 \(Ax=b\)，若 \(rank(A)=2,\ rank([A\mid b])=3\)，则该方程组
+  \[
+  \text{A. 有唯一解}\qquad
+  \text{B. 无解}\qquad
+  \text{C. 有无穷多解}\qquad
+  \text{D. 无法判断}
+  \]
+\end{enumerate}
+
+\textbf{填空题}
+\begin{enumerate}[label=\textbf{填\arabic*.}]
+  \item 四元齐次线性方程组 \(Ax=0\) 中，若 \(rank(A)=3\)，则它的基础解系里有 \underline{\hspace{3em}} 个向量。
+  \item 若非齐次方程组有一个特解 \(x_p\)，对应齐次方程组的通解为 \(t_1\eta_1+t_2\eta_2\)，则原方程组的通解为 \underline{\hspace{10em}}。
+\end{enumerate}
+\end{exercisebox}
+
+\begin{summarybox}[快练答案与小技巧]
+\begin{itemize}
+  \item \textbf{选 1} 选 \textbf{B}。因为维数 \(=n-r=3-2=1\)。
+  \item \textbf{选 2} 选 \textbf{B}。两个秩不等，先判无解，别急着一路算到最后才发现。
+  \item \textbf{填 1}：\(1\)。
+  \item \textbf{填 2}：\(x=x_p+t_1\eta_1+t_2\eta_2\)。
+\end{itemize}
+
+\textbf{这一章做选择 / 填空最稳的三句心里话：}
+\begin{itemize}
+  \item 看见齐次题，先想 \(n-r\)。
+  \item 看见非齐次题，先比 \(rank(A)\) 和 \(rank([A\mid b])\)。
+  \item 看见“通解”两个字，优先往“特解 \(+\) 齐次通解”上靠。
+\end{itemize}
 \end{summarybox}
 
 \chapter{矩阵的基本运算：从解方程的工具到可操作对象}
@@ -1193,6 +1247,16 @@ a_{31}&a_{32}
 
 真正计算时，三阶以上更常见的策略仍然是：\important{借助行变换化成上三角，然后取对角线元素乘积。}
 
+\begin{summarybox}[一个很容易丢分的小提醒]
+这里那句“化成上三角再乘对角线”，默认你已经在\important{一边变形，一边记账}：
+\begin{itemize}
+  \item 交换两行，行列式要变号；
+  \item 某一行乘了倍数，行列式也要跟着乘对应倍数；
+  \item 只有“某一行加上另一行的若干倍”这类变换，行列式才保持不变。
+\end{itemize}
+所以考试里最稳的做法不是一口气把矩阵变完，而是每做一步就顺手记一下“这一变会不会改行列式”。这样最不容易把符号或系数弄丢。
+\end{summarybox}
+
 \begin{examplebox}[例 5：用消元法求三阶行列式]
 求
 \[
@@ -1445,6 +1509,50 @@ X=BA^{-1}
   \]
   \item 不可逆，因为第二行是第一行的 2 倍，故行列式为 \(0\)。
 \end{enumerate}
+\end{summarybox}
+
+\section{考前 5 分钟：选择 / 填空快练}
+
+\begin{exercisebox}[第 2 章选择与填空快练]
+\textbf{选择题}
+\begin{enumerate}[label=\textbf{选\arabic*.}]
+  \item 若 \(A\) 是 \(2\times 3\) 矩阵，\(B\) 是 \(3\times 2\) 矩阵，则 \(AB\) 的维数是
+  \[
+  \text{A. }2\times 2\qquad
+  \text{B. }3\times 3\qquad
+  \text{C. }2\times 3\qquad
+  \text{D. }3\times 2
+  \]
+  \item 下列哪一种行变换不改变行列式的值？
+  \[
+  \text{A. 交换两行}\qquad
+  \text{B. 某一行乘 2}\qquad
+  \text{C. 某一行加上另一行的若干倍}\\
+  \text{D. 把一行提公因子出来}
+  \]
+\end{enumerate}
+
+\textbf{填空题}
+\begin{enumerate}[label=\textbf{填\arabic*.}]
+  \item 若 \(A\) 可逆，则 \((A^{-1})^T=\underline{\hspace{6em}}\)。
+  \item 若 \(\det(A)=-3,\ \det(B)=2\)，则 \(\det(AB)=\underline{\hspace{3em}}\)。
+\end{enumerate}
+\end{exercisebox}
+
+\begin{summarybox}[快练答案与小技巧]
+\begin{itemize}
+  \item \textbf{选 1} 选 \textbf{A}。矩阵乘法只看“中间能不能对上，结果拿两边”。
+  \item \textbf{选 2} 选 \textbf{C}。这就是最常见的“倍加不变”。
+  \item \textbf{填 1}：\((A^T)^{-1}\)。
+  \item \textbf{填 2}：\(-6\)。
+\end{itemize}
+
+\textbf{这一章的速判技巧：}
+\begin{itemize}
+  \item 矩阵乘法先看中间两个数能不能对上。
+  \item 行列式计算时别忘了“换行变号，倍乘带走，倍加不动”。
+  \item 矩阵方程先分清未知矩阵在左边还是右边，再决定左乘还是右乘逆矩阵。
+\end{itemize}
 \end{summarybox}
 
 \chapter{矩阵的相似对角化：从特征值分解入门}
@@ -1880,6 +1988,50 @@ x_3=0.
 \end{enumerate}
 \end{summarybox}
 
+\section{考前 5 分钟：选择 / 填空快练}
+
+\begin{exercisebox}[第 3 章选择与填空快练]
+\textbf{选择题}
+\begin{enumerate}[label=\textbf{选\arabic*.}]
+  \item 对上三角矩阵，特征值最稳的读取方式是
+  \[
+  \text{A. 看第一列}\qquad
+  \text{B. 看主对角线}\qquad
+  \text{C. 看最后一行}\qquad
+  \text{D. 先做转置}
+  \]
+  \item 一个 \(n\) 阶矩阵若有 \(n\) 个互不相同的特征值，则它
+  \[
+  \text{A. 一定不可逆}\qquad
+  \text{B. 一定可相似对角化}\\
+  \text{C. 一定是对称矩阵}\qquad
+  \text{D. 一定是正交矩阵}
+  \]
+\end{enumerate}
+
+\textbf{填空题}
+\begin{enumerate}[label=\textbf{填\arabic*.}]
+  \item 求属于特征值 \(\lambda\) 的特征向量，本质上是在解方程 \underline{\hspace{8em}}。
+  \item 若三阶矩阵 \(A\) 的特征值为 \(1,1,2\)，则 \(\det(A)=\underline{\hspace{3em}}\)。
+\end{enumerate}
+\end{exercisebox}
+
+\begin{summarybox}[快练答案与小技巧]
+\begin{itemize}
+  \item \textbf{选 1} 选 \textbf{B}。
+  \item \textbf{选 2} 选 \textbf{B}。
+  \item \textbf{填 1}：\((A-\lambda I)x=0\)。
+  \item \textbf{填 2}：\(2\)。
+\end{itemize}
+
+\textbf{这一章最常用的客观题思路：}
+\begin{itemize}
+  \item 求特征值先看 \(\det(A-\lambda I)\)，别一上来盲猜。
+  \item 上三角、下三角、对角矩阵，先看主对角线，往往能省一大步。
+  \item 看见重根先别急着说“不能对角化”，还要看特征向量够不够多。
+\end{itemize}
+\end{summarybox}
+
 \chapter{矩阵的合同对角化：从正交矩阵到对角形式}
 \mygochapterguide{椎名立希}{taki.png}{第三章讲的是一般矩阵何时能相似对角化，这一章则只盯住更重要的一类矩阵：实对称矩阵。它们不仅可对角化，而且可以由正交矩阵对角化，这一步正是二次型的入口。}
 
@@ -2245,6 +2397,53 @@ Q^TAQ=\mathrm{diag}(2,2,0).
   \]
   因为中间矩阵已经变成对角矩阵，所以没有 \(y_iy_j\ (i\neq j)\) 的交叉项。
 \end{enumerate}
+\end{summarybox}
+
+\section{考前 5 分钟：选择 / 填空快练}
+
+\begin{exercisebox}[第 4 章选择与填空快练]
+\textbf{选择题}
+\begin{enumerate}[label=\textbf{选\arabic*.}]
+  \item 若 \(Q\) 为正交矩阵，则一定有
+  \[
+  \text{A. }Q^{-1}=Q\qquad
+  \text{B. }Q^{-1}=Q^T\qquad
+  \text{C. }\det(Q)=0\qquad
+  \text{D. }Q^2=I
+  \]
+  \item 对实对称矩阵，属于不同特征值的特征向量
+  \[
+  \text{A. 必平行}\qquad
+  \text{B. 必正交}\qquad
+  \text{C. 必相等}\qquad
+  \text{D. 必线性相关}
+  \]
+\end{enumerate}
+
+\textbf{填空题}
+\begin{enumerate}[label=\textbf{填\arabic*.}]
+  \item 若 \(Q\) 为正交矩阵，则向量长度在变换 \(x\mapsto Qx\) 下 \underline{\hspace{3em}}。
+  \item 若 \(Q^TAQ=\mathrm{diag}(1,3,3)\)，且 \(x=Qy\)，则
+  \[
+  x^TAx=\underline{\hspace{10em}}.
+  \]
+\end{enumerate}
+\end{exercisebox}
+
+\begin{summarybox}[快练答案与小技巧]
+\begin{itemize}
+  \item \textbf{选 1} 选 \textbf{B}。
+  \item \textbf{选 2} 选 \textbf{B}。
+  \item \textbf{填 1}：保持不变。
+  \item \textbf{填 2}：\(y_1^2+3y_2^2+3y_3^2\)。
+\end{itemize}
+
+\textbf{这一章做题时最省力的提醒：}
+\begin{itemize}
+  \item 判断正交矩阵，最稳还是回到 \(Q^TQ=I\)。
+  \item 一旦题目说明“实对称矩阵”，就优先往正交对角化上想。
+  \item 写二次型变换时，别把 \(x=Qy\) 和 \(y=Qx\) 写反。
+\end{itemize}
 \end{summarybox}
 
 \chapter{二次型与正定矩阵：从形式到判定}
@@ -2666,6 +2865,58 @@ a^2<6,\qquad a^2<5.
   \]
   \item 秩为 \(2\)，正惯性指数为 \(2\)，因为没有负特征值，所以它是半正定而不是正定。
 \end{enumerate}
+\end{summarybox}
+
+\section{考前 5 分钟：选择 / 填空快练}
+
+\begin{exercisebox}[第 5 章选择与填空快练]
+\textbf{选择题}
+\begin{enumerate}[label=\textbf{选\arabic*.}]
+  \item 二次型
+  \[
+  x_1^2-x_2^2+2x_3^2
+  \]
+  的类型是
+  \[
+  \text{A. 正定}\qquad
+  \text{B. 负定}\qquad
+  \text{C. 半正定}\qquad
+  \text{D. 不定}
+  \]
+  \item 对实对称矩阵 \(A\)，若它正定，则它的特征值
+  \[
+  \text{A. 全为正}\qquad
+  \text{B. 全为负}\qquad
+  \text{C. 至少有一个为 0}\qquad
+  \text{D. 不一定}
+  \]
+\end{enumerate}
+
+\textbf{填空题}
+\begin{enumerate}[label=\textbf{填\arabic*.}]
+  \item 二次型
+  \[
+  x_1^2+4x_1x_2+3x_2^2
+  \]
+  对应对称矩阵的非对角元 \(a_{12}=a_{21}=\underline{\hspace{3em}}\)。
+  \item 三阶实对称矩阵正定时，它的三个顺序主子式应当 \underline{\hspace{6em}}。
+\end{enumerate}
+\end{exercisebox}
+
+\begin{summarybox}[快练答案与小技巧]
+\begin{itemize}
+  \item \textbf{选 1} 选 \textbf{D}。
+  \item \textbf{选 2} 选 \textbf{A}。
+  \item \textbf{填 1}：\(2\)。
+  \item \textbf{填 2}：全都大于 \(0\)。
+\end{itemize}
+
+\textbf{这一章最值钱的速判习惯：}
+\begin{itemize}
+  \item 看到交叉项，先把系数平分，再写矩阵。
+  \item 判正定前先确认矩阵是不是实对称矩阵。
+  \item 如果已经能代出一个正值和一个负值，就可以很快判断“不定”，不必再硬算一整套。
+\end{itemize}
 \end{summarybox}
 
 \end{document}
