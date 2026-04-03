@@ -110,6 +110,16 @@ def check_chapter_4() -> None:
     )
     require_matrix_equal(Q.T * A * Q, s.diag(2, 2, 0), "第 4 章补充例题正交对角化结果错误")
 
+    v1 = s.Matrix([1, 1, 0])
+    v2 = s.Matrix([1, 0, 0])
+    u1 = v1
+    u2 = v2 - (v2.dot(u1) / u1.dot(u1)) * u1
+    require(u1.dot(u2) == 0, "第 4 章 Gram-Schmidt 例题中正交化结果错误")
+    e1 = u1 / s.sqrt(u1.dot(u1))
+    e2 = (2 * u2) / s.sqrt((2 * u2).dot(2 * u2))
+    require(e1.dot(e2) == 0, "第 4 章 Gram-Schmidt 例题中单位正交化结果错误")
+    require(e1.dot(e1) == 1 and e2.dot(e2) == 1, "第 4 章 Gram-Schmidt 例题中单位化结果错误")
+
 
 def check_chapter_5() -> None:
     A = s.Matrix([[2, 1, 0], [1, 2, -1], [0, -1, 2]])

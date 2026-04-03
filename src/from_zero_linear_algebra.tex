@@ -2041,6 +2041,7 @@ x_3=0.
   \item 理解正交矩阵的定义与几何含义。
   \item 掌握实对称矩阵的正交对角化结论。
   \item 会做典型三阶实对称矩阵的正交对角化。
+  \item 会在重特征值情形下做 Gram-Schmidt 正交化与单位化。
   \item 理解这一章和二次型之间的直接联系。
 \end{itemize}
 \end{goalbox}
@@ -2114,6 +2115,92 @@ Q^TAQ=D,
 \end{center}
 
 \mygospotlight{结构提示}{要乐奈}{rana.png}{一般矩阵未必能被漂亮地拆开，但实对称矩阵几乎像是“线性代数给你的福利”。只要确认它对称，很多事情都能走最顺的路线。}
+
+\section{正交对角化其实就是相似对角化的特殊情况}
+
+这一点如果不点透，第四章就会看起来像突然换了一个新世界。其实不是。
+
+第三章里我们做的是：
+\[
+P^{-1}AP=D.
+\]
+它的核心动作是：\important{找到一组线性无关特征向量，把它们拼成 \(P\)}。
+
+第四章里我们做的是：
+\[
+Q^TAQ=D.
+\]
+它的核心动作是：\important{找到一组标准正交特征向量，把它们拼成 \(Q\)}。
+
+注意这里最关键的差别只多了一层：
+\begin{center}
+\important{第四章不是不要特征向量了，而是要把第三章找到的特征向量，进一步整理成“互相正交、长度为 1”的形式。}
+\end{center}
+
+如果 \(q_1,\dots,q_n\) 是一组标准正交特征向量，把它们作为列向量组成
+\[
+Q=(q_1,\dots,q_n),
+\]
+那么因为这些列向量彼此正交且长度为 \(1\)，就有
+\[
+Q^{-1}=Q^T.
+\]
+于是第三章的相似对角化公式
+\[
+Q^{-1}AQ=D
+\]
+就自动变成了
+\[
+Q^TAQ=D.
+\]
+
+所以你可以把这句话直接记住：
+\begin{summarybox}[一句最重要的话]
+\important{正交对角化，本质上就是“相似对角化 + 特征向量还能选成标准正交组”。}
+\end{summarybox}
+
+\section{本章最关键题型：正交对角化标准流程}
+
+\begin{summarybox}[三阶实对称矩阵正交对角化的标准做题流程]
+\textbf{第 1 步：先确认矩阵是实对称矩阵}
+\begin{itemize}
+  \item 先看 \(A^T=A\)。
+  \item 只有确认它是实对称矩阵，后面的“不同特征值对应特征向量正交”“一定能正交对角化”这些好性质才能放心用。
+\end{itemize}
+
+\textbf{第 2 步：求特征值}
+\begin{itemize}
+  \item 还是求 \(\det(A-\lambda I)=0\)。
+  \item 这一层和第三章没有本质区别。
+\end{itemize}
+
+\textbf{第 3 步：对每个特征值求特征向量}
+\begin{itemize}
+  \item 还是解 \((A-\lambda I)x=0\)。
+  \item 不同特征值下求出来的特征向量，理论上天然正交。
+\end{itemize}
+
+\textbf{第 4 步：如果某个特征值有重数，就检查同一特征空间里的向量是否已经正交}
+\begin{itemize}
+  \item 如果已经正交，直接单位化。
+  \item 如果还不正交，就在这个特征空间里做 Gram-Schmidt 正交化，再单位化。
+\end{itemize}
+
+\textbf{第 5 步：把标准正交特征向量按列排成 \(Q\)}
+\begin{itemize}
+  \item 再按相同顺序把对应特征值排进对角阵 \(D\)。
+  \item 最后写
+  \[
+  Q^TAQ=D.
+  \]
+\end{itemize}
+\end{summarybox}
+
+\begin{animebox}[陪学小剧场：第四章真正比第三章多了什么]
+\speakerline{thumb_tomori.png}{高松灯}{所以第四章不是重新学一套新算法，而是在第三章的基础上多做一步“整理向量”的工作？}
+\speakerline{thumb_soyo.png}{长崎素世}{对。第三章是“够不够多”，第四章是“还能不能整理得更整齐”。}
+\speakerline{thumb_taki.png}{椎名立希}{考试里最容易漏的，就是同一特征值下那一步：不是解出两个向量就结束了，还要检查它们是不是已经正交。}
+\end{animebox}
 
 \section{例题精讲：三阶实对称矩阵的正交对角化}
 
@@ -2257,9 +2344,125 @@ y^TQ^TAQy=y^TDy.
 
 而 \(D\) 是对角矩阵，于是交叉项会消失，二次型就被化成标准形了。
 
-\section{补充知识：同一特征值下怎么得到正交向量}
+\section{补充知识：同一特征值下怎样做 Gram-Schmidt 正交化与单位化}
 
-如果某个特征值有多个线性无关特征向量，它们彼此不一定一开始就单位化。这个时候我们可以在同一个特征空间里做单位化，必要时做 Gram-Schmidt 正交化。
+第三章里你只要在每个特征空间里找出足够多的线性无关特征向量就行，但第四章还要再多看一眼：
+\begin{center}
+\important{它们是不是已经互相正交？如果没有，就要继续整理。}
+\end{center}
+
+设同一个特征值 \(\lambda\) 对应的特征空间里，有一组线性无关向量
+\[
+v_1,v_2,\dots,v_s.
+\]
+
+如果它们本来就互相正交，那当然最好，直接单位化就行。麻烦只出现在“线性无关，但不正交”的时候。这时最稳的流程就是 Gram-Schmidt 正交化：
+\[
+u_1=v_1,
+\]
+\[
+u_2=v_2-\frac{\langle v_2,u_1\rangle}{\langle u_1,u_1\rangle}u_1,
+\]
+\[
+u_3=v_3-\frac{\langle v_3,u_1\rangle}{\langle u_1,u_1\rangle}u_1-\frac{\langle v_3,u_2\rangle}{\langle u_2,u_2\rangle}u_2,
+\]
+后面以此类推。
+
+得到互相正交的 \(u_1,u_2,\dots,u_s\) 以后，再做单位化：
+\[
+e_i=\frac{u_i}{\|u_i\|}\qquad (i=1,2,\dots,s).
+\]
+
+这里有一个特别值得点明的小结论：
+\begin{summarybox}[为什么正交化以后仍然是同一个特征值的特征向量]
+因为同一个特征空间对线性组合封闭。也就是说，如果
+\[
+Av=\lambda v,\qquad Aw=\lambda w,
+\]
+那么对任意常数 \(\alpha,\beta\)，都有
+\[
+A(\alpha v+\beta w)=\lambda(\alpha v+\beta w).
+\]
+所以 Gram-Schmidt 过程中做出来的新向量，虽然长相变了，但仍然留在原来的那个特征空间里。
+\end{summarybox}
+
+\begin{examplebox}[补充例题：把一组不正交的特征向量整理成标准正交组]
+设某个实对称矩阵在特征值 \(\lambda=2\) 下，解 \((A-2I)x=0\) 后得到两条线性无关特征向量
+\[
+v_1=
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix},
+\qquad
+v_2=
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}.
+\]
+它们显然线性无关，但并不正交。现在把它们整理成标准正交组。
+
+\textbf{第一步：先做正交化}
+\[
+u_1=v_1=
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix}.
+\]
+
+再算
+\[
+u_2=v_2-\frac{\langle v_2,u_1\rangle}{\langle u_1,u_1\rangle}u_1.
+\]
+
+因为
+\[
+\langle v_2,u_1\rangle=1,\qquad
+\langle u_1,u_1\rangle=2,
+\]
+所以
+\[
+u_2=
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}
+-\frac12
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac12\\[0.3em]-\frac12\\[0.3em]0
+\end{pmatrix}.
+\]
+
+这个向量乘上 \(2\) 不影响方向，因此也可以把它写得更顺眼一点：
+\[
+u_2'=
+\begin{pmatrix}
+1\\-1\\0
+\end{pmatrix}.
+\]
+
+\textbf{第二步：再做单位化}
+\[
+e_1=\frac{1}{\sqrt2}
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix},
+\qquad
+e_2=\frac{1}{\sqrt2}
+\begin{pmatrix}
+1\\-1\\0
+\end{pmatrix}.
+\]
+
+这样我们就得到了同一个特征值 \(\lambda=2\) 下的一组\important{标准正交特征向量}。
+
+这道小题最想让你记住的不是公式本身，而是顺序：
+\begin{center}
+\important{先正交化，再单位化。不要一上来就乱除长度。}
+\end{center}
+\end{examplebox}
 
 \section{补充例题：重特征值下怎样补成正交基}
 
